@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partners - Zuri Labs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --royal-blue: #0A0A2A;
+            --gold: #FFD700;
+            --sand-white: #F8F7F4;
+            --dark-gray: #1A202C;
+            --medium-gray: #4A5568;
+        }
+        html {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--sand-white);
+            color: var(--dark-gray);
+            overscroll-behavior-y: none;
+        }
+        .bg-royal-blue { background-color: var(--royal-blue); }
+        .hover\:bg-royal-blue-dark:hover { background-color: #00005a; }
+        .text-gold { color: var(--gold); }
+        .bg-gold { background-color: var(--gold); }
+        .hover\:bg-gold-dark:hover { background-color: #cca300; }
+        .border-gold { border-color: var(--gold); }
+
+        /* Glow Effect */
+        .glow {
+            filter: drop-shadow(0 0 8px var(--gold));
+        }
+        .glow-white {
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+        }
+
+        /* Angled Sections */
+        .clip-path-angled {
+            clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 95%);
+        }
+        .clip-path-angled-reverse {
+            clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideInUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .animate-fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+        .animate-slide-in-up {
+            animation: slideInUp 1s ease-in-out;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .tab.active {
+            border-bottom-color: var(--gold);
+            color: var(--royal-blue);
+        }
+        .stat-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        #hero-section {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 700px;
+            background-color: var(--royal-blue);
+            overflow: hidden;
+        }
+        #hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            filter: brightness(1.2);
+        }
+
+        /* Afrofuturistic Header Enhancements */
+        #header.scrolled {
+            background-color: rgba(10, 10, 42, 0.8); /* royal-blue at 80% */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFD700' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        #header-logo path {
+            transition: filter 0.3s ease;
+        }
+        #header-logo:hover path {
+            filter: drop-shadow(0 0 8px var(--gold));
+        }
+
+        #header-nav a:not(.button) { /* Target only nav links, not buttons */
+            position: relative;
+        }
+        #header-nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--gold);
+            transition: width 0.3s ease;
+        }
+        #header-nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Button Styles */
+        .button-primary {
+            @apply bg-gold text-black font-bold px-8 py-4 rounded-full transition-transform transform hover:scale-105 text-sm sm:text-base lg:text-lg shadow-lg whitespace-nowrap;
+            text-shadow: none;
+        }
+        .button-primary:hover {
+            filter: drop-shadow(0 0 12px var(--gold));
+        }
+        .button-secondary {
+            @apply bg-white/10 backdrop-blur-sm border-2 border-white/20 text-white font-bold px-8 py-4 rounded-full hover:bg-white hover:text-royal-blue transition-colors text-sm sm:text-base lg:text-lg shadow-lg whitespace-nowrap;
+            text-shadow: none;
+        }
+        .bg-sand-white {
+            background-color: var(--sand-white);
+            color: var(--dark-gray);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-3">
+                 <svg width="150" height="40" viewBox="0 0 150 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:var(--gold); stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#FFB800; stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M20 5 L0 20 L20 35 L18 20 Z" fill="url(#gold-grad)" />
+                    <text font-family="Inter, sans-serif" font-size="28" font-weight="800" fill="#0A0A2A">
+                        <tspan x="25" y="32">Zuri Labs</tspan>
+                    </text>
+                </svg>
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="text-gray-600 hover:text-royal-blue font-medium transition-colors">Home</a>
+                <a href="partners.html" class="text-royal-blue font-semibold transition-colors">Partners</a>
+                <a href="https://n8n.srv895792.hstgr.cloud/form/04d0f255-b238-43e8-ad92-07ec40fa030d" target="_blank" rel="noopener noreferrer" class="bg-gold text-black font-bold px-6 py-2.5 rounded-full hover:bg-gold-dark transition-transform transform hover:scale-105 shadow-md">Join Now</a>
+            </div>
+             <!-- Mobile menu can be added here if needed -->
+            <a href="index.html" class="md:hidden text-gray-600 hover:text-royal-blue font-medium transition-colors">Back to Home</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="bg-sand-white">
+        <!-- Hero Section -->
+        <section class="bg-royal-blue text-white">
+            <div class="container mx-auto px-6 lg:px-8 py-24 text-center">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight">Partner with Africa's AI Vanguard</h1>
+                <p class="mt-6 text-lg md:text-xl text-blue-200 max-w-3xl mx-auto">Unlock a continent of opportunity. We bridge the gap between your innovative tools and Africa's brightest tech talent, creating a powerful ecosystem for mutual growth and market leadership.</p>
+            </div>
+        </section>
+
+        <!-- Value Proposition Section -->
+        <section class="py-24">
+            <div class="container mx-auto px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold text-royal-blue">A Symbiotic Ecosystem for Growth</h2>
+                    <p class="mt-4 text-gray-700 text-lg">Our partnership model is designed for mutual benefit. By providing value to our community, you gain unparalleled access to a dynamic market and a pipeline of skilled, motivated talent.</p>
+                </div>
+
+                <div class="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Value for Partners 1 -->
+                    <div class="bg-white p-8 rounded-lg shadow-sm">
+                        <div class="w-12 h-12 mb-4 bg-royal-blue/10 rounded-full flex items-center justify-center">
+                            <svg class="w-6 h-6 text-royal-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a3 3 0 015.288 0M12 14a3 3 0 100-6 3 3 0 000 6z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-royal-blue">Access Verified Talent</h3>
+                        <p class="mt-2 text-gray-600">Connect with a curated pool of job-ready professionals and rising stars in AI, data science, and automation. Reduce your hiring friction and find the right fit, faster.</p>
+                    </div>
+                    <!-- Value for Partners 2 -->
+                    <div class="bg-white p-8 rounded-lg shadow-sm">
+                        <div class="w-12 h-12 mb-4 bg-royal-blue/10 rounded-full flex items-center justify-center">
+                            <svg class="w-6 h-6 text-royal-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-royal-blue">Gain Market Intelligence</h3>
+                        <p class="mt-2 text-gray-600">Gain on-the-ground insights into the African tech landscape. Understand user needs, test products, and get direct feedback from a highly engaged community of tech experts and users.</p>
+                    </div>
+                    <!-- Value for Partners 3 -->
+                    <div class="bg-white p-8 rounded-lg shadow-sm">
+                        <div class="w-12 h-12 mb-4 bg-royal-blue/10 rounded-full flex items-center justify-center">
+                            <svg class="w-6 h-6 text-royal-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.196-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.783-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-royal-blue">Enhance Brand Leadership</h3>
+                        <p class="mt-2 text-gray-600">Position your brand as a key enabler of Africa's tech future. Showcase your tools and expertise through workshops, content, and community events, building lasting brand loyalty.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Partnership Tiers Section -->
+        <section class="py-24 bg-white">
+            <div class="container mx-auto px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold text-royal-blue">Ways to Partner With Us</h2>
+                    <p class="mt-4 text-gray-700 text-lg">We offer flexible partnership models to align with your strategic goals.</p>
+                </div>
+                <div class="mt-16 grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <div>
+                        <h3 class="text-2xl font-bold text-royal-blue mb-2">Technology & Tool Partners</h3>
+                        <p class="text-gray-600">Are you a provider of AI, automation, or developer tools? Offer our members exclusive discounts, extended trials, or educational licenses. In return, gain a dedicated user base, valuable feedback, and powerful case studies from the African market.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-royal-blue mb-2">Hiring & Talent Partners</h3>
+                        <p class="text-gray-600">Looking to build your tech team? Partner with us to get priority access to our talent pipeline. Sponsor a hackathon, post exclusive job listings, or engage with members in our accelerator programs to find your next great hire.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-royal-blue mb-2">Content & Training Partners</h3>
+                        <p class="text-gray-600">Share your expertise and build authority. Co-host webinars, provide expert speakers for our events, or contribute to our knowledge hub. We provide the platform and the audience; you provide the industry-leading insights.</p>
+                    </div>
+                     <div>
+                        <h3 class="text-2xl font-bold text-royal-blue mb-2">Ecosystem & Community Partners</h3>
+                        <p class="text-gray-600">Are you a tech hub, university, or community organization? Let's collaborate on events, share resources, and cross-promote to build a stronger, more connected tech ecosystem for everyone.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="bg-royal-blue text-white my-24 py-20 px-6 rounded-2xl">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold">Let's Build the Future, Together.</h2>
+                <p class="mt-4 text-blue-200 text-lg">Ready to explore a partnership with Zuri Labs? We'd love to discuss how we can create value together.</p>
+                <div class="mt-10">
+                     <button id="open-modal-btn" class="bg-gold text-black font-bold px-8 py-4 rounded-full hover:bg-gold-dark transition-transform transform hover:scale-105 text-lg shadow-lg">Start a Partnership Inquiry</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 border-t">
+        <div class="container mx-auto px-6 lg:px-8 py-12">
+            <div class="text-center text-gray-500 text-sm">
+                <ul class="flex justify-center space-x-6 mb-4">
+                    <li><a href="index.html#about" class="hover:text-royal-blue">About</a></li>
+                    <li><a href="partners.html" class="hover:text-royal-blue">Partners</a></li>
+                    <li><a href="privacy-policy.html" class="hover:text-royal-blue">Privacy</a></li>
+                    <li><a href="terms-of-service.html" class="hover:text-royal-blue">Terms</a></li>
+                    <li><a href="contact.html" class="hover:text-royal-blue">Contact</a></li>
+                </ul>
+                <p>&copy; 2025 Zuri Labs. All rights reserved. A hub for global ambition with local impact.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Partnership Modal -->
+    <div id="partnership-modal" class="modal-hidden fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-0">
+        <!-- Overlay -->
+        <div id="modal-overlay" class="modal-overlay absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+        
+        <!-- Modal Content -->
+        <div id="modal-content" class="modal-content bg-white w-full max-w-lg rounded-2xl shadow-2xl z-10 flex flex-col max-h-[90vh] p-8">
+            <div class="flex justify-between items-start">
+                <h2 class="text-2xl font-bold text-royal-blue">Partnership Inquiry</h2>
+                <button id="close-modal-btn" class="text-2xl text-gray-500 hover:text-royal-blue">&times;</button>
+            </div>
+            <p class="mt-2 text-gray-600">Complete the form below, and we'll be in touch shortly.</p>
+
+            <form id="partnership-form" class="mt-6 space-y-4">
+                <div>
+                    <label for="fullName" class="form-label">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" class="form-input" required>
+                </div>
+                <div>
+                    <label for="companyName" class="form-label">Company Name</label>
+                    <input type="text" id="companyName" name="companyName" class="form-input" required>
+                </div>
+                <div>
+                    <label for="workEmail" class="form-label">Work Email</label>
+                    <input type="email" id="workEmail" name="workEmail" class="form-input" required>
+                </div>
+                <div>
+                    <label for="partnershipType" class="form-label">Partnership Type</label>
+                    <div class="relative">
+                        <select id="partnershipType" name="partnershipType" class="form-select" required>
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="Technology & Tool Partner">Technology & Tool Partner</option>
+                            <option value="Hiring & Talent Partner">Hiring & Talent Partner</option>
+                            <option value="Content & Training Partner">Content & Training Partner</option>
+                            <option value="Ecosystem & Community Partner">Ecosystem & Community Partner</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label for="message" class="form-label">Message</label>
+                    <textarea id="message" name="message" rows="4" class="form-input" placeholder="Tell us a bit about your organization and how you'd like to partner..."></textarea>
+                </div>
+                <div class="pt-4">
+                    <button type="submit" class="w-full bg-royal-blue text-white font-bold py-3 px-6 rounded-lg hover:bg-opacity-90 transition-colors">Send Inquiry</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('partnership-modal');
+        const openBtn = document.getElementById('open-modal-btn');
+        const closeBtn = document.getElementById('close-modal-btn');
+        const overlay = document.getElementById('modal-overlay');
+        const form = document.getElementById('partnership-form');
+
+        const openModal = () => modal.classList.remove('modal-hidden');
+        const closeModal = () => modal.classList.add('modal-hidden');
+
+        openBtn.addEventListener('click', openModal);
+        closeBtn.addEventListener('click', closeModal);
+        overlay.addEventListener('click', closeModal);
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('fullName').value;
+            const company = document.getElementById('companyName').value;
+            const email = document.getElementById('workEmail').value;
+            const type = document.getElementById('partnershipType').value;
+            const message = document.getElementById('message').value;
+
+            const subject = `Partnership Inquiry from ${company}`;
+            const body = `
+New Partnership Inquiry from the Zuri Labs Website:
+-------------------------------------------------
+Name: ${name}
+Company: ${company}
+Email: ${email}
+Partnership Type: ${type}
+-------------------------------------------------
+
+Message:
+${message}
+            `;
+
+            window.location.href = `mailto:partners@zurilabs.co?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            closeModal();
+        });
+    </script>
+
+</body>
+</html>

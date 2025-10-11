@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Zuri Labs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --royal-blue: #0A0A2A;
+            --gold: #FFD700;
+            --sand-white: #F8F7F4;
+            --dark-gray: #1A202C;
+        }
+        html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--sand-white); color: var(--dark-gray); }
+        .text-royal-blue { color: var(--royal-blue); }
+        .hover\:text-royal-blue:hover { color: var(--royal-blue); }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-3">
+                 <svg width="150" height="40" viewBox="0 0 150 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:var(--gold); stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#FFB800; stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M20 5 L0 20 L20 35 L18 20 Z" fill="url(#gold-grad)" />
+                    <text font-family="Inter, sans-serif" font-size="28" font-weight="800" fill="#0A0A2A">
+                        <tspan x="25" y="32">Zuri Labs</tspan>
+                    </text>
+                </svg>
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="text-gray-600 hover:text-royal-blue font-medium transition-colors">Home</a>
+                <a href="partners.html" class="text-gray-600 hover:text-royal-blue font-medium transition-colors">Partners</a>
+                <a href="https://n8n.srv895792.hstgr.cloud/form/04d0f255-b238-43e8-ad92-07ec40fa030d" target="_blank" rel="noopener noreferrer" class="bg-gold text-black font-bold px-6 py-2.5 rounded-full hover:bg-gold-dark transition-transform transform hover:scale-105 shadow-md">Join Now</a>
+            </div>
+            <!-- Mobile menu can be added here if needed -->
+            <a href="index.html" class="md:hidden text-gray-600 hover:text-royal-blue font-medium transition-colors">Back to Home</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container mx-auto px-6 lg:px-8 py-24">
+            <div class="max-w-3xl mx-auto text-center">
+                <h1 class="text-4xl md:text-5xl font-bold text-royal-blue">Get in Touch</h1>
+                <p class="mt-4 text-lg text-gray-600">Have a question, a partnership proposal, or just want to say hello? We'd love to hear from you.</p>
+            </div>
+
+            <div class="max-w-lg mx-auto mt-16 bg-white p-8 rounded-lg shadow-md">
+                <h2 class="text-2xl font-bold text-royal-blue mb-4">Contact Information</h2>
+                <p class="text-gray-700">For all inquiries, please reach out to us via email. We'll do our best to respond as quickly as possible.</p>
+                <div class="mt-6">
+                    <p class="font-semibold">General Inquiries:</p>
+                    <a href="mailto:hello@zurilabs.co" class="text-lg text-gold hover:underline">hello@zurilabs.co</a>
+                </div>
+                <div class="mt-6">
+                    <p class="font-semibold">Partnership Inquiries:</p>
+                    <a href="mailto:partners@zurilabs.co" class="text-lg text-gold hover:underline">partners@zurilabs.co</a>
+                </div>
+                 <div class="mt-8 border-t pt-6">
+                    <p class="font-semibold">Ready to join the community?</p>
+                    <a href="https://n8n.srv895792.hstgr.cloud/form/04d0f255-b238-43e8-ad92-07ec40fa030d" target="_blank" rel="noopener noreferrer" class="text-lg text-gold hover:underline">Click here to join the NEXUS &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 border-t">
+        <div class="container mx-auto px-6 lg:px-8 py-12">
+            <div class="text-center text-gray-500 text-sm">
+                <ul class="flex justify-center space-x-6 mb-4">
+                    <li><a href="index.html#about" class="hover:text-royal-blue">About</a></li>
+                    <li><a href="partners.html" class="hover:text-royal-blue">Partners</a></li>
+                    <li><a href="privacy-policy.html" class="hover:text-royal-blue">Privacy</a></li>
+                    <li><a href="terms-of-service.html" class="hover:text-royal-blue">Terms</a></li>
+                    <li><a href="contact.html" class="hover:text-royal-blue">Contact</a></li>
+                </ul>
+                <p>&copy; 2025 Zuri Labs. All rights reserved. A hub for global ambition with local impact.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
