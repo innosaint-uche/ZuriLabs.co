@@ -157,15 +157,66 @@
 
         /* Button Styles */
         .button-primary {
-            @apply bg-gold text-black font-bold px-8 py-4 rounded-full transition-transform transform hover:scale-105 text-sm sm:text-base lg:text-lg shadow-lg whitespace-nowrap;
+            background-color: var(--gold);
+            color: #000;
+            font-weight: 700;
+            padding: 1rem 2rem;
+            border-radius: 9999px;
+            transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
+            white-space: nowrap;
             text-shadow: none;
+        }
+        @media (min-width: 640px) {
+            .button-primary {
+                font-size: 1rem;
+            }
+        }
+        @media (min-width: 1024px) {
+            .button-primary {
+                font-size: 1.125rem;
+            }
         }
         .button-primary:hover {
             filter: drop-shadow(0 0 12px var(--gold));
+            transform: scale(1.05);
         }
         .button-secondary {
-            @apply bg-white/10 backdrop-blur-sm border-2 border-white/20 text-white font-bold px-8 py-4 rounded-full hover:bg-white hover:text-royal-blue transition-colors text-sm sm:text-base lg:text-lg shadow-lg whitespace-nowrap;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-weight: 700;
+            padding: 1rem 2rem;
+            border-radius: 9999px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
+            white-space: nowrap;
             text-shadow: none;
+        }
+        @media (min-width: 640px) {
+            .button-secondary {
+                font-size: 1rem;
+            }
+        }
+        @media (min-width: 1024px) {
+            .button-secondary {
+                font-size: 1.125rem;
+            }
+        }
+        .button-secondary:hover {
+            background-color: #ffffff;
+            color: var(--royal-blue);
+            transform: scale(1.05);
         }
         .bg-sand-white {
             background-color: var(--sand-white);
@@ -643,105 +694,5 @@
             } // end if(canvas && heroSection)
         })(); // end main function
     </script>
-</body>roup.add(nigeriaNode);
-                
-                // Pulsating Rings
-                const rings = [];
-                for (let i = 0; i < 3; i++) {
-                    const ring = new THREE.Mesh(
-                        new THREE.RingGeometry(0.5, 0.7, 64),
-                        new THREE.MeshBasicMaterial({ 
-                            color: 0xFFD700, 
-                            transparent: true, 
-                            opacity: 0,
-                            side: THREE.DoubleSide
-                        })
-                    );
-                    ring.position.copy(nigeriaNode.position);
-                    ring.lookAt(new THREE.Vector3(0,0,0));
-                    rings.push({ mesh: ring, startTime: Date.now() + i * 2000 });
-                    globeGroup.add(ring.mesh);
-                }
-
-                const nodes = [ { lat: -26.20, lon: 28.04}, { lat: 30.04, lon: 31.23 }, { lat: 5.60, lon: -0.18 }, { lat: -1.29, lon: 36.82 }, { lat: 6.52, lon: 3.37}, { lat: -33.92, lon: 18.42 }];
-
-                class Beam {
-                    constructor(start, end) {
-                        this.start = start; this.end = end;
-                        this.curve = new THREE.QuadraticBezierCurve3(this.start, this.start.clone().lerp(this.end, 0.5).add(this.start.clone().normalize().multiplyScalar(6)), this.end);
-                        this.line = new THREE.Line(new THREE.BufferGeometry().setFromPoints(this.curve.getPoints(100)), new THREE.LineBasicMaterial({ color: 0xFFD700, transparent: true, opacity: 0, linewidth: 2 }));
-                        this.reset();
-                    }
-                    reset() { this.startTime = Date.now() + Math.random() * 5000; this.duration = 2000 + Math.random() * 2000; }
-                    update() {
-                        const elapsed = Date.now() - this.startTime;
-                        if (elapsed > 0) {
-                            this.line.material.opacity = Math.sin(Math.PI * Math.max(0, elapsed / this.duration)) * 0.7;
-                            if (elapsed >= this.duration) this.reset();
-                        }
-                    }
-                }
-                
-                const beams = nodes.map(n => new Beam(nigeriaNode.position, setNodePosition(n.lat, n.lon)));
-                beams.forEach(b => globeGroup.add(b.line));
-
-                let mouseX = 0, targetRotationY = 0.8;
-                
-                const onMouseMove = (event) => { mouseX = (event.clientX - window.innerWidth / 2) };
-                document.addEventListener('mousemove', onMouseMove);
-                
-                const updateCameraPosition = () => {
-                    const width = heroSection.offsetWidth;
-                    targetRotationY = (width >= 768) ? 0.8 + (mouseX * 0.0005) : (mouseX * 0.001);
-                    camera.position.x = (width >= 768) ? -12 : 0;
-                }
-
-                globeGroup.rotation.x = 0.3;
-                
-                const clock = new THREE.Clock();
-
-                const animate = () => {
-                    requestAnimationFrame(animate);
-                    const elapsedTime = clock.getElapsedTime();
-
-                    // Breathing effect for Nigeria node
-                    nigeriaNode.scale.setScalar(1 + Math.sin(elapsedTime * 2) * 0.1);
-
-                    // Update pulsating rings
-                    rings.forEach(r => {
-                        const ringElapsed = (Date.now() - r.startTime) / 4000; // 4 second loop
-                        if (ringElapsed > 1) r.startTime = Date.now();
-                        r.mesh.scale.setScalar(1 + ringElapsed * 10);
-                        r.mesh.material.opacity = Math.sin(ringElapsed * Math.PI);
-                    });
-
-                    updateCameraPosition();
-                    globeGroup.rotation.y += (targetRotationY - globeGroup.rotation.y) * 0.02;
-                    beams.forEach(b => b.update());
-                    composer.render(); // Use composer to render
-                };
-                animate();
-
-                window.addEventListener('resize', () => {
-                    camera.aspect = heroSection.offsetWidth / heroSection.offsetHeight;
-                    camera.updateProjectionMatrix();
-                    composer.setSize(heroSection.offsetWidth, heroSection.offsetHeight);
-                    updateCameraPosition();
-                });
-                updateCameraPosition();
-            } // end if(canvas && heroSection)
-        })(); // end main function
-    </script>
 </body>
 </html>
-<!-- Add new header section here -->
-<header id="new-header">
-    <!-- New header content here -->
-    <nav>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
-</header>
