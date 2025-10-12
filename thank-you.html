@@ -3,55 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thank You - Zuri Labs</title>
-    <!-- Hide this page from search engine results -->
-    <meta name="robots" content="noindex, nofollow">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Thank You – Zuri Labs</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --royal-blue: #0A0A2A;
-            --gold: #FFD700;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--royal-blue);
-        }
-    </style>
-    <!-- This meta tag will redirect the user to the homepage after 5 seconds -->
-    <meta http-equiv="refresh" content="5;url=index.html">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body class="antialiased text-white">
+<body>
+    <header class="header">
+        <div class="navbar">
+            <a href="index.html" class="brand" aria-label="Zuri Labs home">
+                <span class="brand-mark">ZL</span>
+                Zuri Labs
+            </a>
+            <nav class="nav-links" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="about-zurilabs.html">About</a>
+                <a href="partners.html">Partners</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="nav-actions">
+                <a class="btn btn-secondary" href="index.html#individuals">Join the Community</a>
+                <a class="btn btn-primary" href="partners.html">Partner With Us</a>
+            </div>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Open navigation">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h14M3 12h14M3 18h14"/></svg>
+            </button>
+        </div>
+        <div class="mobile-drawer" id="mobileDrawer">
+            <a href="index.html">Home</a>
+            <a href="about-zurilabs.html">About</a>
+            <a href="partners.html">Partners</a>
+            <a href="contact.html">Contact</a>
+            <a class="btn btn-secondary" href="index.html#individuals">Join the Community</a>
+            <a class="btn btn-primary" href="partners.html">Partner With Us</a>
+        </div>
+    </header>
 
-    <div class="min-h-screen flex flex-col items-center justify-center text-center px-4">
-        <a href="index.html">
-            <svg width="150" height="40" viewBox="0 0 150 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" style="stop-color:var(--gold); stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#FFB800; stop-opacity:1" />
-                    </linearGradient>
-                </defs>
-                <path d="M20 5 L0 20 L20 35 L18 20 Z" fill="url(#gold-grad)"/>
-                <text font-family="Inter, sans-serif" font-size="28" font-weight="800" fill="white">
-                    <tspan x="25" y="32">Zuri Labs</tspan>
-                </text>
-            </svg>
-        </a>
-        
-        <h1 class="text-4xl sm:text-5xl font-black mt-12 leading-tight">Welcome to the NEXUS.</h1>
-        <p class="mt-4 text-lg text-gray-300 max-w-2xl">
-            Thank you for joining! Your application has been received. We're excited to have you as a founding member of Africa's AI innovation hub.
-        </p>
-        <p class="mt-8 text-gray-400">
-            You will be redirected to the homepage shortly.
-        </p>
-        <a href="index.html" class="mt-2 text-gold hover:underline">
-            Or click here to return now.
-        </a>
-    </div>
+    <main>
+        <section class="section hero">
+            <div class="section-inner hero-grid">
+                <div>
+                    <div class="badge">Thank you</div>
+                    <h1>Your message is on its way.</h1>
+                    <p class="hero-subtitle">The Zuri Labs team will review your submission and respond within two business days.</p>
+                    <div class="btn-row">
+                        <a class="btn btn-primary" href="index.html">Return Home</a>
+                        <a class="btn btn-secondary" href="about-zurilabs.html#roadmap">Explore the Blueprint</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-metrics">
+                        <div class="metric-card">
+                            <span class="badge">Stay inspired</span>
+                            <p>While you wait, dive into the latest insights from Zuri Labs.</p>
+                            <a class="btn btn-secondary" href="about-zurilabs.html">Read the Strategy</a>
+                        </div>
+                        <div class="metric-card">
+                            <span class="badge">Join the nexus</span>
+                            <p>Become part of the community shaping Africa's AI future.</p>
+                            <a class="btn btn-primary" href="index.html#individuals">Apply to Join</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="brand">
+                <span class="brand-mark">ZL</span>
+                Zuri Labs
+            </div>
+            <div class="footer-cols">
+                <div>
+                    <h4>Navigate</h4>
+                    <ul style="list-style:none;padding:0;margin:1rem 0 0;display:grid;gap:0.5rem;">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about-zurilabs.html">About</a></li>
+                        <li><a href="partners.html">Partners</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Resources</h4>
+                    <ul style="list-style:none;padding:0;margin:1rem 0 0;display:grid;gap:0.5rem;">
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="thank-you.html" aria-current="page">Thank You</a></li>
+                        <li><a href="about-zurilabs.html#roadmap">Roadmap</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Stay in the loop</h4>
+                    <p>Monthly updates on community programs, partnerships, and opportunities.</p>
+                    <form action="thank-you.html" method="get" class="form-grid">
+                        <label for="footer-email">Email address</label>
+                        <input id="footer-email" name="email" type="email" placeholder="you@domain.com" required>
+                        <button class="btn btn-primary" type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <small>© <span id="year"></span> Zuri Labs. Crafted for Africa's next generation of innovators.</small>
+        </div>
+    </footer>
+
+    <script>
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mobileDrawer = document.getElementById('mobileDrawer');
+        const year = document.getElementById('year');
+        if (year) {
+            year.textContent = new Date().getFullYear();
+        }
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', () => {
+                mobileDrawer.classList.toggle('open');
+                const expanded = mobileDrawer.classList.contains('open');
+                mobileToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+            });
+        }
+        mobileDrawer?.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileDrawer.classList.remove('open');
+                mobileToggle?.setAttribute('aria-expanded', 'false');
+            });
+        });
+    </script>
 </body>
 </html>
