@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Zuri Labs - Strategic Blueprint</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --royal-blue: #0A0A2A;
+            --gold: #FFD700;
+            --sand-white: #F8F7F4;
+            --plum: #412d74;
+        }
+        html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background:
+                radial-gradient(circle at top right, rgba(255, 215, 0, 0.12), transparent 55%),
+                radial-gradient(circle at bottom left, rgba(99, 102, 241, 0.18), transparent 60%),
+                linear-gradient(155deg, #050515 0%, #0B0B2F 45%, #121232 100%);
+            color: var(--sand-white);
+            min-height: 100vh;
+        }
+        .glass-panel {
+            background: linear-gradient(150deg, rgba(17, 25, 65, 0.8), rgba(44, 21, 75, 0.7));
+            border-radius: 1.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            box-shadow: 0 40px 120px -60px rgba(5, 5, 25, 0.8);
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+        }
+        .blueprint-shell {
+            position: relative;
+            overflow: hidden;
+            border-radius: 2rem;
+            background: linear-gradient(135deg, rgba(10, 10, 42, 0.94) 0%, rgba(39, 22, 86, 0.86) 50%, rgba(15, 59, 108, 0.88) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+        .blueprint-shell::before,
+        .blueprint-shell::after {
+            content: '';
+            position: absolute;
+            border-radius: 999px;
+            filter: blur(90px);
+            opacity: 0.75;
+            pointer-events: none;
+        }
+        .blueprint-shell::before {
+            width: 420px;
+            height: 420px;
+            top: -140px;
+            right: -160px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.32), transparent 65%);
+        }
+        .blueprint-shell::after {
+            width: 360px;
+            height: 360px;
+            bottom: -120px;
+            left: -160px;
+            background: radial-gradient(circle, rgba(96, 165, 250, 0.28), transparent 65%);
+        }
+        .gradient-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.4rem;
+            border-radius: 9999px;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            font-size: 0.8rem;
+            font-weight: 600;
+            background: linear-gradient(90deg, rgba(255, 215, 0, 0.22), rgba(140, 82, 255, 0.32));
+            border: 1px solid rgba(255, 215, 0, 0.35);
+            color: rgba(255, 255, 255, 0.92);
+        }
+        .blueprint-nav a {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            padding: 0.9rem 1.1rem;
+            border-radius: 1rem;
+            color: rgba(248, 247, 244, 0.78);
+            transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
+            border: 1px solid transparent;
+        }
+        .blueprint-nav a span {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 9999px;
+            background: rgba(255, 255, 255, 0.12);
+            color: var(--sand-white);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .blueprint-nav a:hover,
+        .blueprint-nav a:focus-visible {
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            transform: translateX(4px);
+            border-color: rgba(255, 255, 255, 0.18);
+            outline: none;
+        }
+        .data-tile {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 1.25rem;
+            padding: 1.4rem;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+        .cta-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.75rem;
+            background: linear-gradient(150deg, rgba(15, 23, 42, 0.92), rgba(30, 27, 75, 0.88));
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 30px 70px -40px rgba(5, 5, 20, 0.85);
+        }
+        .cta-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0.35;
+            background: radial-gradient(circle at top right, rgba(255, 215, 0, 0.4), transparent 55%);
+        }
+        .cta-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        .link-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .link-chip svg {
+            width: 1rem;
+            height: 1rem;
+        }
+        .button-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            background: linear-gradient(135deg, #FFD700 0%, #FBBF24 100%);
+            color: #0B0B2F;
+            font-weight: 700;
+            padding: 0.95rem 2.4rem;
+            border-radius: 999px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 20px 50px -25px rgba(255, 193, 7, 0.65);
+        }
+        .button-primary:hover,
+        .button-primary:focus-visible {
+            transform: translateY(-2px);
+            box-shadow: 0 30px 60px -20px rgba(255, 193, 7, 0.75);
+            outline: none;
+        }
+        .button-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            padding: 0.95rem 2.4rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.32);
+            color: rgba(255, 255, 255, 0.9);
+            transition: transform 0.3s ease, background 0.3s ease, border 0.3s ease;
+            backdrop-filter: blur(6px);
+        }
+        .button-secondary:hover,
+        .button-secondary:focus-visible {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.5);
+            outline: none;
+        }
+        .content-section {
+            background: rgba(7, 12, 34, 0.72);
+            border-radius: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: clamp(2.5rem, 3vw + 1rem, 3.5rem);
+            box-shadow: 0 40px 120px -70px rgba(5, 5, 25, 0.85);
+        }
+        .content-section h2 {
+            font-size: clamp(2rem, 2.8vw + 1rem, 2.75rem);
+            font-weight: 800;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            text-align: left;
+            padding: 1rem 1.2rem;
+        }
+        thead th {
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.65);
+        }
+        tbody tr {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        tbody tr:first-child {
+            border-top: none;
+        }
+        @media (max-width: 768px) {
+            .blueprint-shell {
+                border-radius: 1.5rem;
+            }
+            .blueprint-nav a {
+                padding: 0.75rem 0.95rem;
+            }
+            .data-tile {
+                padding: 1.15rem;
+            }
+            .content-section {
+                border-radius: 1.5rem;
+            }
+            table,
+            thead,
+            tbody,
+            th,
+            td,
+            tr {
+                display: block;
+            }
+            thead {
+                display: none;
+            }
+            tbody tr {
+                margin-bottom: 1.5rem;
+                padding-bottom: 1.25rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            }
+            tbody tr:last-child {
+                border-bottom: none;
+            }
+            td {
+                padding: 0.5rem 0;
+            }
+            td::before {
+                content: attr(data-label);
+                display: block;
+                font-size: 0.75rem;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                color: rgba(255, 255, 255, 0.55);
+                margin-bottom: 0.35rem;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="fixed top-0 inset-x-0 z-40 bg-white/5 backdrop-blur-xl border-b border-white/10">
+        <nav class="container mx-auto px-6 lg:px-10 py-5 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-3">
+                <svg width="150" height="40" viewBox="0 0 150 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:var(--gold); stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#FFB800; stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M20 5 L0 20 L20 35 L18 20 Z" fill="url(#gold-grad)" class="drop-shadow-[0_0_8px_rgba(255,215,0,0.5)]" />
+                    <text font-family="Inter, sans-serif" font-size="28" font-weight="800" fill="#ffffff">
+                        <tspan x="25" y="32">Zuri Labs</tspan>
+                    </text>
+                </svg>
+            </a>
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-white/70">
+                <a href="index.html" class="hover:text-white transition-colors">Home</a>
+                <a href="about-zurilabs.html" class="text-white">About</a>
+                <a href="partners.html" class="hover:text-white transition-colors">Partners</a>
+                <a href="https://n8n.srv895792.hstgr.cloud/form/04d0f255-b238-43e8-ad92-07ec40fa030d" target="_blank" rel="noopener noreferrer" class="button-primary text-sm px-6 py-2.5">Join The NEXUS</a>
+            </div>
+            <button id="about-mobile-menu-button" class="md:hidden text-white" aria-expanded="false" aria-controls="about-mobile-menu">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                <span class="sr-only">Toggle navigation</span>
+            </button>
+        </nav>
+        <div id="about-mobile-menu" class="md:hidden hidden border-t border-white/10 bg-slate-900/90 backdrop-blur-xl">
+            <div class="px-6 py-4 space-y-3 text-white/75">
+                <a href="index.html" class="block hover:text-white">Home</a>
+                <a href="about-zurilabs.html" class="block text-white">About</a>
+                <a href="partners.html" class="block hover:text-white">Partners</a>
+                <a href="https://n8n.srv895792.hstgr.cloud/form/04d0f255-b238-43e8-ad92-07ec40fa030d" target="_blank" rel="noopener noreferrer" class="button-primary w-full justify-center">Join The NEXUS</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="relative">
+        <div class="absolute inset-0 -z-10 overflow-hidden">
+            <div class="absolute -top-32 -right-40 w-96 h-96 bg-gradient-to-br from-yellow-400/20 to-purple-500/20 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 w-[28rem] h-[28rem] bg-gradient-to-tr from-blue-500/10 to-teal-400/20 rounded-full blur-3xl"></div>
+        </div>
+
+        <section class="pt-32 pb-20">
+            <div class="container mx-auto px-6 lg:px-10">
+                <div class="max-w-4xl">
+                    <span class="gradient-chip mb-6">
+                        <span class="w-2 h-2 rounded-full bg-gold inline-flex"></span>
+                        Zuri Labs Blueprint
+                    </span>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight text-white">A Strategic Blueprint for an AI-Powered Tech Community</h1>
+                    <p class="mt-6 text-lg text-white/80 leading-relaxed">Nigeria is racing toward a digital-first economy, yet over 85% of graduates still lack the practical skills to sustain its momentum. Zuri Labs exists to align this ambition with execution—arming Africa’s next generation of experts and users in AI, automation, and emerging technology.</p>
+                    <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                        <a href="https://n8n.srv895792.hstgr.cloud/form/04d0f255-b238-43e8-ad92-07ec40fa030d" target="_blank" rel="noopener noreferrer" class="button-primary">Join as a Next-Gen User</a>
+                        <a href="partners.html" class="button-secondary">Explore Partnership Pathways</a>
+                    </div>
+                </div>
+
+                <div class="mt-16 blueprint-shell p-6 sm:p-8 lg:p-12 grid lg:grid-cols-[minmax(0,260px)_1fr] gap-6 lg:gap-12">
+                    <div class="space-y-4 blueprint-nav">
+                        <p class="text-white/60 uppercase tracking-[0.22em] text-xs">Blueprint Sections</p>
+                        <a href="#executive-summary"><span>01</span> Executive Summary</a>
+                        <a href="#section-1"><span>02</span> The New African Digital Frontier</a>
+                        <a href="#section-2"><span>03</span> The Human Algorithm</a>
+                        <a href="#section-3"><span>04</span> The Talent Paradox</a>
+                        <a href="#section-4"><span>05</span> Zuri Labs Blueprint</a>
+                        <a href="#section-5"><span>06</span> Conclusion &amp; Outlook</a>
+                    </div>
+                    <div class="glass-panel p-6 sm:p-8 space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="data-tile">
+                                <p class="text-xs uppercase tracking-[0.16em] text-white/55">ICT Share of GDP</p>
+                                <p class="mt-1 text-2xl font-bold text-white">~20%</p>
+                                <p class="mt-2 text-sm text-white/65">Proof that digital growth is now core to Nigeria’s economy.</p>
+                            </div>
+                            <div class="data-tile">
+                                <p class="text-xs uppercase tracking-[0.16em] text-white/55">AI Adoption</p>
+                                <p class="mt-1 text-2xl font-bold text-white">93% of firms</p>
+                                <p class="mt-2 text-sm text-white/65">Organisations are using AI today and need skills to realise ROI.</p>
+                            </div>
+                        </div>
+                        <p class="text-white/80 leading-relaxed">Zuri Labs is where the skills built to serve Africa’s NEXUS—the NExt-gen EXperts and USers of AI, Automation, and Emerging Technology—come to life. Known as Next-Gen Users, this collective powers brain circulation between the continent and its diaspora.</p>
+                        <p class="text-white/65 leading-relaxed">Rather than pursuing capital-intensive megaprojects, the blueprint emphasises agile, community-led growth that compounds across three years. Each phase balances accessible tooling, shared knowledge, and progressive partnerships.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="executive-summary" class="pb-20">
+            <div class="container mx-auto px-6 lg:px-10">
+                <div class="content-section">
+                    <h2 class="text-white">Executive Summary</h2>
+                    <p class="mt-6 text-white/80 leading-relaxed">Nigeria’s youth-driven digital economy is expanding faster than the talent prepared to fuel it. Government-backed transformation policies, private sector AI adoption, and a globally minded youth cohort have created unprecedented demand for practical, execution-ready skills. Yet, with over 85% of graduates lacking digital fluency, the country risks under-delivering on its promise.</p>
+                    <p class="mt-5 text-white/80 leading-relaxed">Zuri Labs intervenes as a nexus: a living laboratory designed to activate Africa’s NEXUS—NExt-gen EXperts and USers. The community translates raw ambition into sustained execution by convening builders, negotiators, and storytellers who can shape a continental AI narrative.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-1" class="pb-20">
+            <div class="container mx-auto px-6 lg:px-10 grid lg:grid-cols-[minmax(0,0.75fr)_minmax(0,1fr)] gap-10 items-start">
+                <div class="content-section">
+                    <h2 class="text-white">Section 1: The New African Digital Frontier</h2>
+                    <p class="mt-6 text-white/80 leading-relaxed">Nigeria is no longer an “emerging” tech market—it is an accelerating one. ICT contributes roughly one-fifth of the national GDP, with projections pushing digital revenues toward $18.3B by 2026. The government’s National Digital Economy Policy and Strategy (NDEPS) aligns national priorities with this momentum.</p>
+                    <p class="mt-5 text-white/80 leading-relaxed">For Zuri Labs, this scale validates the opportunity. Launching where the economy is already compounding digital value minimises market risk and positions the community as an essential piece of national infrastructure.</p>
+                </div>
+                <div class="space-y-6">
+                    <div class="content-section">
+                        <h3 class="text-2xl font-semibold text-white">Nigeria's Digital Economy at a Glance</h3>
+                        <div class="mt-6 overflow-hidden rounded-3xl border border-white/10">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Key Metric</th>
+                                        <th>Latest Statistic</th>
+                                        <th>Strategic Implication</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td data-label="Key Metric" class="font-semibold text-white">ICT Contribution to GDP</td>
+                                        <td data-label="Latest Statistic" class="text-white/80">~20% in Q2 2024</td>
+                                        <td data-label="Strategic Implication" class="text-white/65">Confirms the sector as a national priority and primes corporate alliances.</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Key Metric" class="font-semibold text-white">AI Adoption Rate</td>
+                                        <td data-label="Latest Statistic" class="text-white/80">93% of organisations</td>
+                                        <td data-label="Strategic Implication" class="text-white/65">Signals urgent demand for implementation playbooks and upskilling.</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Key Metric" class="font-semibold text-white">Internet &amp; Mobile</td>
+                                        <td data-label="Latest Statistic" class="text-white/80">107M internet users, 150M mobile connections</td>
+                                        <td data-label="Strategic Implication" class="text-white/65">Mandates a mobile-first, bandwidth-aware experience.</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Key Metric" class="font-semibold text-white">Youth Population</td>
+                                        <td data-label="Latest Statistic" class="text-white/80">60% under 25</td>
+                                        <td data-label="Strategic Implication" class="text-white/65">Ensures a vast audience hungry for practical digital skills.</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Key Metric" class="font-semibold text-white">Tech Skills Gap</td>
+                                        <td data-label="Latest Statistic" class="text-white/80">85% skills deficit</td>
+                                        <td data-label="Strategic Implication" class="text-white/65">Defines Zuri Labs’ core mission: closing the execution chasm.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="content-section">
+                        <h3 class="text-2xl font-semibold text-white">Infrastructure &amp; Policy Dualities</h3>
+                        <p class="mt-4 text-white/75 leading-relaxed">Expanding fibre, 5G rollouts, and supportive policy accelerate access. Yet inconsistent power supply, fragmented taxation, and a persistent rural digital divide require adaptive delivery. Zuri Labs answers with inclusive programming, low-bandwidth content formats, and offline-capable resources.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-2" class="pb-20">
+            <div class="container mx-auto px-6 lg:px-10">
+                <div class="content-section">
+                    <h2 class="text-white">Section 2: The Human Algorithm</h2>
+                    <div class="mt-6 grid lg:grid-cols-2 gap-10">
+                        <div>
+                            <h3 class="text-xl font-semibold text-white">Youth-Driven Momentum</h3>
+                            <p class="mt-4 text-white/75 leading-relaxed">Nigeria’s median age of 18 and mobile-first habits make adoption frictionless, but expectations for seamless UX are high. Searches for “how to learn AI” and “how to make money with AI” have surged triple digits, proving a motivated, outcome-focused audience.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-white">Mindset &amp; Trust</h3>
+                            <p class="mt-4 text-white/75 leading-relaxed">After years of financial instability, transparency and security are non-negotiable. Remote work exposure has also normalised global standards. Zuri Labs responds with transparent governance, clear value pathways, and programmes that connect local talent to global opportunities.</p>
+                        </div>
+                    </div>
+                    <div class="mt-10 grid lg:grid-cols-3 gap-8">
+                        <div class="data-tile">
+                            <p class="text-xs uppercase tracking-[0.12em] text-white/55">Digital Natives</p>
+                            <p class="mt-3 text-2xl font-semibold text-white">60% under 25</p>
+                            <p class="mt-2 text-sm text-white/70">A generation primed for mobile-first learning and community building.</p>
+                        </div>
+                        <div class="data-tile">
+                            <p class="text-xs uppercase tracking-[0.12em] text-white/55">Entrepreneurial Signal</p>
+                            <p class="mt-3 text-2xl font-semibold text-white">160% search growth</p>
+                            <p class="mt-2 text-sm text-white/70">Surging intent around AI skills and monetisation pathways.</p>
+                        </div>
+                        <div class="data-tile">
+                            <p class="text-xs uppercase tracking-[0.12em] text-white/55">Global Aspirations</p>
+                            <p class="mt-3 text-2xl font-semibold text-white">"Japa" mindset</p>
+                            <p class="mt-2 text-sm text-white/70">Reframed as brain circulation by linking diaspora mentors and local builders.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-3" class="pb-20">
+            <div class="container mx-auto px-6 lg:px-10 grid lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)] gap-10 items-start">
+                <div class="content-section">
+                    <h2 class="text-white">Section 3: The Talent Paradox</h2>
+                    <p class="mt-6 text-white/80 leading-relaxed">Traditional education systems lag behind industry needs. Curricula remain theoretical, assessments overlook practical build experience, and recruiters encounter graduates unprepared for modern workflows. This mismatch is Nigeria’s most immediate barrier to realising digital ROI.</p>
+                    <p class="mt-5 text-white/80 leading-relaxed">Zuri Labs closes the gap with hands-on, community-driven learning, focused on shipping proof-of-skill artefacts that employers trust.</p>
+                </div>
+                <div class="space-y-6">
+                    <div class="content-section">
+                        <h3 class="text-2xl font-semibold text-white">Turning Brain Drain into Brain Circulation</h3>
+                        <p class="mt-4 text-white/75 leading-relaxed">The “Japa” wave can be a loss—or a lever. Diaspora professionals want structured channels to invest in Nigeria’s future. Zuri Labs curates this bridge, inviting mentors, capital, and global exposure back into the ecosystem.</p>
+                    </div>
+                    <div class="content-section">
+                        <h3 class="text-2xl font-semibold text-white">Community Mechanics</h3>
+                        <ul class="mt-4 space-y-3 text-white/75">
+                            <li class="flex items-start gap-3"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-gold"></span>Hands-on labs, cohort projects, and AI workflow clinics for immediate skill deployment.</li>
+                            <li class="flex items-start gap-3"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-gold"></span>Collective bargaining for discounted tools, compute, and training that reduce experimentation costs.</li>
+                            <li class="flex items-start gap-3"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-gold"></span>Storytelling infrastructure that surfaces African innovation to media, partners, and policymakers.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-4" class="pb-20">
+            <div class="container mx-auto px-6 lg:px-10">
+                <div class="content-section">
+                    <h2 class="text-white">Section 4: Zuri Labs Blueprint</h2>
+                    <p class="mt-6 text-white/80 leading-relaxed">The roadmap prioritises agile, compoundable growth—starting with low-cost, high-impact moves and scaling into continental influence.</p>
+                    <div class="mt-8 grid lg:grid-cols-3 gap-6">
+                        <div class="data-tile">
+                            <h3 class="text-xl font-semibold text-white">Year 1 · Foundation</h3>
+                            <p class="mt-3 text-white/70">Launch on community-first platforms (WhatsApp, Discord) and ship monthly virtual labs. Target 100 engaged members, two tool discounts, and the first corporate sponsor.</p>
+                        </div>
+                        <div class="data-tile">
+                            <h3 class="text-xl font-semibold text-white">Year 2 · Scaling Impact</h3>
+                            <p class="mt-3 text-white/70">Expand across Africa, introduce mentorship, negotiate cloud credits, and host the inaugural Zuri Labs AI Summit. Goal: 500 members and a flagship whitepaper.</p>
+                        </div>
+                        <div class="data-tile">
+                            <h3 class="text-xl font-semibold text-white">Year 3 · Continental Influence</h3>
+                            <p class="mt-3 text-white/70">Grow to 2,000 members, launch a no-code mobile app, and co-create policy with agencies like NITDA. Achieve financial sustainability through memberships and sponsorships.</p>
+                        </div>
+                    </div>
+                    <div class="mt-10 grid lg:grid-cols-2 gap-8">
+                        <div class="data-tile">
+                            <h3 class="text-xl font-semibold text-white">Tool Stack</h3>
+                            <p class="mt-3 text-white/75 leading-relaxed">WhatsApp, Discord, Carrd/Webflow, Airtable, Zoom, Canva, and Mailchimp keep operations nimble without sacrificing polish.</p>
+                        </div>
+                        <div class="data-tile">
+                            <h3 class="text-xl font-semibold text-white">Risk Mitigation</h3>
+                            <p class="mt-3 text-white/75 leading-relaxed">Combat low engagement with high-value programming, secure early sponsors to de-risk funding, and leverage tech media plus influencer partnerships for visibility.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-5" class="pb-24">
+            <div class="container mx-auto px-6 lg:px-10">
+                <div class="content-section">
+                    <h2 class="text-white">Section 5: Conclusion &amp; Outlook</h2>
+                    <p class="mt-6 text-white/80 leading-relaxed">Zuri Labs is more than a community; it is the connective tissue for Africa’s AI decade. By transforming the talent paradox into a coordinated engine of innovation, we empower individuals, fortify businesses, and elevate the continent’s narrative on the global stage.</p>
+                    <p class="mt-5 text-white/80 leading-relaxed">This is an invitation to build the infrastructure of opportunity—one lab, partnership, and shipped project at a time.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="pb-24">
+            <div class="container mx-auto px-6 lg:px-10">
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <div class="cta-card p-8 sm:p-10">
+                        <span class="link-chip"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.5 4.5 21 12l-7.5 7.5M21 12H3"/></svg> Individuals</span>
+                        <h3 class="mt-4 text-3xl font-semibold text-white">Join Africa’s Next-Gen Users</h3>
+                        <p class="mt-3 text-white/80 leading-relaxed">Access live builds, AI workflow libraries, and a peer community engineered for hands-on execution.</p>
+                        <a href="https://n8n.srv895792.hstgr.cloud/form/04d0f255-b238-43e8-ad92-07ec40fa030d" target="_blank" rel="noopener noreferrer" class="button-primary mt-6">Apply to the Community</a>
+                    </div>
+                    <div class="cta-card p-8 sm:p-10">
+                        <span class="link-chip"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m3 12 7.5-7.5L18 12m-7.5 7.5L3 12M21 12h-3"/></svg> Businesses</span>
+                        <h3 class="mt-4 text-3xl font-semibold text-white">Partner for Shared Outcomes</h3>
+                        <p class="mt-3 text-white/80 leading-relaxed">Work with curated squads, co-design talent pipelines, and negotiate collective value with Africa’s AI builders.</p>
+                        <a href="partners.html" class="button-secondary mt-6">Design a Partnership</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-white/10 bg-black/40 backdrop-blur-xl">
+        <div class="container mx-auto px-6 lg:px-10 py-12">
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div>
+                    <a href="index.html" class="inline-flex items-center space-x-3">
+                        <svg width="150" height="40" viewBox="0 0 150 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="gold-grad-footer" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:var(--gold); stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#FFB800; stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <path d="M20 5 L0 20 L20 35 L18 20 Z" fill="url(#gold-grad-footer)" />
+                            <text font-family="Inter, sans-serif" font-size="28" font-weight="800" fill="#ffffff">
+                                <tspan x="25" y="32">Zuri Labs</tspan>
+                            </text>
+                        </svg>
+                    </a>
+                    <p class="mt-4 text-sm text-white/60 max-w-md">Building Africa's largest AI-driven tech collective through community-led execution, inclusive innovation, and shared prosperity.</p>
+                </div>
+                <div class="grid sm:grid-cols-3 gap-8 text-sm text-white/70">
+                    <div>
+                        <h4 class="font-semibold text-white">Explore</h4>
+                        <ul class="mt-4 space-y-3">
+                            <li><a href="about-zurilabs.html" class="hover:text-white transition-colors">About Zuri Labs</a></li>
+                            <li><a href="index.html#benefits" class="hover:text-white transition-colors">Individuals</a></li>
+                            <li><a href="partners.html" class="hover:text-white transition-colors">Businesses</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-white">Resources</h4>
+                        <ul class="mt-4 space-y-3">
+                            <li><a href="privacy-policy.html" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                            <li><a href="terms-of-service.html" class="hover:text-white transition-colors">Terms of Service</a></li>
+                            <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-white">Stay in the Loop</h4>
+                        <ul class="mt-4 space-y-3">
+                            <li><a href="https://n8n.srv895792.hstgr.cloud/form/04d0f255-b238-43e8-ad92-07ec40fa030d" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Join the Community</a></li>
+                            <li><a href="contact.html" class="hover:text-white transition-colors">Media &amp; Press</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Subscribe to Updates</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-10 pt-6 border-t border-white/10 text-center text-xs text-white/50">&copy; 2025 Zuri Labs. Designed for Africa’s AI-powered decade.</div>
+        </div>
+    </footer>
+
+    <script>
+        const menuButton = document.getElementById('about-mobile-menu-button');
+        const menu = document.getElementById('about-mobile-menu');
+        if (menuButton && menu) {
+            menuButton.addEventListener('click', () => {
+                const isOpen = menu.classList.toggle('hidden');
+                menuButton.setAttribute('aria-expanded', String(!isOpen));
+            });
+        }
+    </script>
+</body>
+</html>

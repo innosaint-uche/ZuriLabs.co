@@ -15,6 +15,7 @@
             --sand-white: #F8F7F4;
             --dark-gray: #1A202C;
         }
+        .hover\:bg-gold-dark:hover { background-color: #e6c200; }
         html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
         body { font-family: 'Inter', sans-serif; background-color: var(--sand-white); color: var(--dark-gray); }
         .prose h2 { color: var(--royal-blue); }
@@ -28,7 +29,7 @@
 <body class="antialiased">
 
     <!-- Header -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-200">
         <nav class="container mx-auto px-6 lg:px-8 py-4 flex justify-between items-center">
             <a href="index.html" class="flex items-center space-x-3">
                  <svg width="150" height="40" viewBox="0 0 150 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -46,12 +47,23 @@
             </a>
             <div class="hidden md:flex items-center space-x-8">
                 <a href="index.html" class="text-gray-600 hover:text-royal-blue font-medium transition-colors">Home</a>
+                <a href="about-zurilabs.html" class="text-gray-600 hover:text-royal-blue font-medium transition-colors">About</a>
                 <a href="partners.html" class="text-gray-600 hover:text-royal-blue font-medium transition-colors">Partners</a>
                 <a href="https://n8n.srv895792.hstgr.cloud/form/04d0f255-b238-43e8-ad92-07ec40fa030d" target="_blank" rel="noopener noreferrer" class="bg-gold text-black font-bold px-6 py-2.5 rounded-full hover:bg-gold-dark transition-transform transform hover:scale-105 shadow-md">Join Now</a>
             </div>
-            <!-- Mobile menu can be added here if needed -->
-            <a href="index.html" class="md:hidden text-gray-600 hover:text-royal-blue font-medium transition-colors">Back to Home</a>
+            <button id="terms-mobile-menu-button" class="md:hidden text-gray-700" aria-expanded="false" aria-controls="terms-mobile-menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+                <span class="sr-only">Toggle menu</span>
+            </button>
         </nav>
+        <div id="terms-mobile-menu" class="md:hidden hidden border-t border-gray-200 bg-white/95 backdrop-blur-xl">
+            <div class="px-6 py-4 space-y-3 text-gray-700">
+                <a href="index.html" class="block hover:text-royal-blue">Home</a>
+                <a href="about-zurilabs.html" class="block hover:text-royal-blue">About</a>
+                <a href="partners.html" class="block hover:text-royal-blue">Partners</a>
+                <a href="https://n8n.srv895792.hstgr.cloud/form/04d0f255-b238-43e8-ad92-07ec40fa030d" target="_blank" rel="noopener noreferrer" class="inline-flex w-full justify-center bg-gold text-black font-semibold px-6 py-2.5 rounded-full hover:bg-gold-dark transition-colors">Join Now</a>
+            </div>
+        </div>
     </header>
 
     <!-- Main Content -->
@@ -108,8 +120,8 @@
     <footer class="bg-gray-100 border-t">
         <div class="container mx-auto px-6 lg:px-8 py-12">
             <div class="text-center text-gray-500 text-sm">
-                <ul class="flex justify-center space-x-6 mb-4">
-                    <li><a href="index.html#about" class="hover:text-royal-blue">About</a></li>
+                <ul class="flex flex-wrap justify-center gap-6 mb-4">
+                    <li><a href="about-zurilabs.html" class="hover:text-royal-blue">About</a></li>
                     <li><a href="partners.html" class="hover:text-royal-blue">Partners</a></li>
                     <li><a href="privacy-policy.html" class="hover:text-royal-blue">Privacy</a></li>
                     <li><a href="terms-of-service.html" class="hover:text-royal-blue">Terms</a></li>
@@ -119,6 +131,17 @@
             </div>
         </div>
     </footer>
+
+<script>
+    const termsMenuButton = document.getElementById('terms-mobile-menu-button');
+    const termsMenu = document.getElementById('terms-mobile-menu');
+    if (termsMenuButton && termsMenu) {
+        termsMenuButton.addEventListener('click', () => {
+            const isOpen = termsMenu.classList.toggle('hidden');
+            termsMenuButton.setAttribute('aria-expanded', String(!isOpen));
+        });
+    }
+</script>
 
 </body>
 </html>

@@ -22,11 +22,14 @@
         }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--sand-white);
+            background: radial-gradient(circle at top right, rgba(255, 215, 0, 0.08), transparent 45%),
+                        radial-gradient(circle at bottom left, rgba(122, 164, 255, 0.12), transparent 50%),
+                        var(--sand-white);
             color: var(--dark-gray);
             overscroll-behavior-y: none;
         }
         .bg-royal-blue { background-color: var(--royal-blue); }
+        .text-royal-blue { color: var(--royal-blue); }
         .hover\:bg-royal-blue-dark:hover { background-color: #00005a; }
         .text-gold { color: var(--gold); }
         .bg-gold { background-color: var(--gold); }
@@ -140,26 +143,1016 @@
 
         /* Button Styles */
         .button-primary {
-            @apply bg-gold text-black font-bold px-8 py-4 rounded-full transition-transform transform hover:scale-105 text-sm sm:text-base lg:text-lg shadow-lg whitespace-nowrap;
+            background-color: var(--gold);
+            color: #000;
+            font-weight: 700;
+            padding: 1rem 2rem;
+            border-radius: 9999px;
+            transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
+            white-space: nowrap;
             text-shadow: none;
+        }
+        @media (min-width: 640px) {
+            .button-primary {
+                font-size: 1rem;
+            }
+        }
+        @media (min-width: 1024px) {
+            .button-primary {
+                font-size: 1.125rem;
+            }
         }
         .button-primary:hover {
             filter: drop-shadow(0 0 12px var(--gold));
+            transform: scale(1.05);
         }
         .button-secondary {
-            @apply bg-white/10 backdrop-blur-sm border-2 border-white/20 text-white font-bold px-8 py-4 rounded-full hover:bg-white hover:text-royal-blue transition-colors text-sm sm:text-base lg:text-lg shadow-lg whitespace-nowrap;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-weight: 700;
+            padding: 1rem 2rem;
+            border-radius: 9999px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
+            white-space: nowrap;
             text-shadow: none;
+        }
+        @media (min-width: 640px) {
+            .button-secondary {
+                font-size: 1rem;
+            }
+        }
+        @media (min-width: 1024px) {
+            .button-secondary {
+                font-size: 1.125rem;
+            }
+        }
+        .button-secondary:hover {
+            background-color: #ffffff;
+            color: var(--royal-blue);
+            transform: scale(1.05);
+        }
+        .button-ghost {
+            background: rgba(255, 255, 255, 0.16);
+            color: rgba(255, 255, 255, 0.92);
+            font-weight: 600;
+            padding: 0.9rem 1.5rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(255, 255, 255, 0.28);
+            transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            white-space: nowrap;
+        }
+        .button-ghost svg {
+            width: 1.1rem;
+            height: 1.1rem;
+        }
+        .button-ghost:hover,
+        .button-ghost:focus-visible {
+            transform: translateY(-1px);
+            border-color: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.22);
+            outline: none;
         }
         .bg-sand-white {
             background-color: var(--sand-white);
             color: var(--dark-gray);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #08091c 0%, #0a1f4d 55%, #123a7b 100%);
+        }
+        .hero-section::before,
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            width: 460px;
+            height: 460px;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.4;
+            pointer-events: none;
+        }
+        .hero-section::before {
+            background: rgba(255, 215, 0, 0.45);
+            top: -180px;
+            left: -160px;
+        }
+        .hero-section::after {
+            background: rgba(122, 164, 255, 0.45);
+            bottom: -200px;
+            right: -120px;
+        }
+        .hero-sheen {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.12), transparent 65%);
+            mix-blend-mode: screen;
+            opacity: 0.4;
+        }
+        .hero-grid {
+            position: relative;
+            display: grid;
+            gap: 3rem;
+            align-items: center;
+        }
+        @media (min-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+            }
+        }
+        .hero-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.45rem 0.9rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.28);
+            color: rgba(255, 255, 255, 0.92);
+            box-shadow: 0 12px 35px -18px rgba(0, 0, 0, 0.8);
+        }
+        .hero-heading {
+            font-size: clamp(2.5rem, 4vw + 1rem, 4.75rem);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+        }
+        .hero-heading span {
+            color: #ffd36b;
+            text-shadow: 0 10px 35px rgba(255, 157, 0, 0.35);
+        }
+        .hero-copy p {
+            color: rgba(232, 237, 255, 0.82);
+            font-size: clamp(1.05rem, 1.5vw + 1rem, 1.35rem);
+        }
+        .hero-actions {
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        @media (min-width: 640px) {
+            .hero-actions {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+        .hero-card-stack {
+            position: relative;
+            display: grid;
+            gap: 1.25rem;
+        }
+        .hero-card {
+            position: relative;
+            padding: 1.75rem;
+            border-radius: 1.5rem;
+            background: rgba(10, 14, 48, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 45px 90px -40px rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            overflow: hidden;
+        }
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            inset: -40% auto auto -30%;
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.35), transparent 70%);
+            z-index: 0;
+            opacity: 0.75;
+        }
+        .hero-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        .hero-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+        .hero-card p {
+            color: rgba(232, 237, 255, 0.72);
+            font-size: 0.95rem;
+        }
+        .hero-card-emoji {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.75rem;
+            height: 2.75rem;
+            border-radius: 0.95rem;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.4), rgba(125, 127, 255, 0.35));
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+        .hero-card-floating {
+            transform: translate3d(20px, 10px, 0);
+        }
+        @media (max-width: 1023px) {
+            .hero-card-floating {
+                transform: none;
+            }
+        }
+        .hero-metrics {
+            margin-top: 3rem;
+            display: grid;
+            gap: 1.25rem;
+        }
+        @media (min-width: 640px) {
+            .hero-metrics {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+        .hero-metric {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 1.25rem;
+            padding: 1.25rem 1.5rem;
+            box-shadow: 0 20px 35px -25px rgba(0, 0, 0, 0.9);
+        }
+        .hero-metric strong {
+            display: block;
+            font-size: 1.65rem;
+            font-weight: 800;
+            color: #fff;
+        }
+        .hero-metric span {
+            color: rgba(232, 237, 255, 0.8);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        /* Section Enhancements */
+        .section-wrapper {
+            position: relative;
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+        }
+        .section-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: 20% auto auto 10%;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(10, 10, 42, 0.08), transparent 70%);
+            pointer-events: none;
+        }
+        .section-header h2 {
+            font-size: clamp(2rem, 3vw + 1rem, 3.25rem);
+            font-weight: 800;
+            color: var(--royal-blue);
+        }
+        .section-header p {
+            font-size: 1.05rem;
+            color: #4a5678;
+        }
+        .value-grid {
+            margin-top: 4rem;
+            display: grid;
+            gap: 1.5rem;
+        }
+        @media (min-width: 640px) {
+            .value-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+        @media (min-width: 1024px) {
+            .value-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+        .value-card {
+            position: relative;
+            padding: 2.2rem;
+            border-radius: 1.5rem;
+            background: linear-gradient(160deg, #ffffff 0%, #f5f6ff 65%, #edf1ff 100%);
+            box-shadow: 0 25px 55px -35px rgba(12, 26, 75, 0.45);
+            border: 1px solid rgba(12, 26, 75, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .value-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 45px 70px -40px rgba(12, 26, 75, 0.55);
+        }
+        .value-card::after {
+            content: '';
+            position: absolute;
+            inset: auto 1.5rem 1.5rem auto;
+            width: 70px;
+            height: 70px;
+            border-radius: 1.25rem;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.35), rgba(125, 127, 255, 0.3));
+            opacity: 0.6;
+            filter: blur(20px);
+        }
+        .value-card-content {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            gap: 1rem;
+        }
+        .value-icon {
+            width: 3.25rem;
+            height: 3.25rem;
+            border-radius: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(10, 10, 42, 0.08);
+            color: var(--royal-blue);
+        }
+        .value-card h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--royal-blue);
+        }
+        .value-card p {
+            color: #4a5678;
+            line-height: 1.6;
+        }
+
+        /* Partnership Tiers */
+        .tier-grid {
+            margin-top: 4rem;
+            display: grid;
+            gap: 1.5rem;
+        }
+        @media (min-width: 768px) {
+            .tier-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+        .tier-card {
+            position: relative;
+            border-radius: 1.75rem;
+            padding: 2.4rem;
+            background: linear-gradient(145deg, rgba(10, 10, 42, 0.92), rgba(18, 29, 82, 0.92));
+            color: rgba(255, 255, 255, 0.92);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 25px 60px -32px rgba(7, 13, 40, 0.65);
+            overflow: hidden;
+        }
+        .tier-card::before {
+            content: '';
+            position: absolute;
+            inset: auto auto -35% -25%;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.22), transparent 70%);
+            opacity: 0.75;
+        }
+        .tier-card::after {
+            content: '';
+            position: absolute;
+            inset: -45% -30% auto auto;
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle, rgba(122, 164, 255, 0.28), transparent 70%);
+            opacity: 0.55;
+        }
+        .tier-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        .tier-title {
+            font-size: 1.45rem;
+            font-weight: 700;
+            margin-bottom: 0.85rem;
+        }
+        .tier-copy {
+            color: rgba(232, 237, 255, 0.8);
+            line-height: 1.7;
+        }
+        .tier-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.25rem;
+        }
+        .tier-badge svg {
+            width: 1rem;
+            height: 1rem;
+        }
+
+        /* CTA */
+        .cta-section {
+            position: relative;
+            border-radius: 2.5rem;
+            overflow: hidden;
+            background: linear-gradient(125deg, #0a0d36 0%, #182f7a 45%, #2d56d2 100%);
+            box-shadow: 0 35px 70px -40px rgba(6, 13, 45, 0.8);
+            isolation: isolate;
+        }
+        .cta-section::before,
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            width: 360px;
+            height: 360px;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.55;
+            pointer-events: none;
+        }
+        .cta-section::before {
+            background: rgba(255, 215, 0, 0.35);
+            top: -160px;
+            left: -120px;
+        }
+        .cta-section::after {
+            background: rgba(122, 164, 255, 0.4);
+            bottom: -150px;
+            right: -90px;
+        }
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+        .cta-badges {
+            display: inline-flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.65rem;
+            margin-bottom: 1.5rem;
+        }
+        .cta-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.45rem 1rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.12);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        /* Modal & Form Enhancements */
+        .modal-hidden {
+            display: none;
+        }
+        .modal-overlay {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        #partnership-modal:not(.modal-hidden) .modal-overlay {
+            opacity: 1;
+        }
+        .modal-content {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 1.85rem;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 45px 80px -32px rgba(5, 8, 32, 0.7);
+            background:
+                radial-gradient(circle at top left, rgba(61, 120, 250, 0.4) 0%, transparent 60%),
+                radial-gradient(circle at bottom right, rgba(255, 215, 0, 0.35) 0%, transparent 65%),
+                linear-gradient(135deg, #060a1b 0%, #101b49 45%, #182a68 100%);
+            color: #e9ecff;
+        }
+        .modal-content::before,
+        .modal-content::after {
+            content: '';
+            position: absolute;
+            pointer-events: none;
+            border-radius: 999px;
+            filter: blur(0.5px);
+            opacity: 0.55;
+        }
+        .modal-content::before {
+            top: -30%;
+            right: -18%;
+            width: 420px;
+            height: 420px;
+            background: radial-gradient(circle, rgba(101, 128, 255, 0.55), rgba(10, 10, 42, 0));
+        }
+        .modal-content::after {
+            bottom: -35%;
+            left: -20%;
+            width: 380px;
+            height: 380px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.45), rgba(10, 10, 42, 0));
+        }
+        .modal-aurora {
+            position: absolute;
+            inset: -45% auto auto -20%;
+            width: 360px;
+            height: 360px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.45), rgba(10, 10, 42, 0.05));
+            filter: blur(60px);
+            opacity: 0.35;
+            animation: auroraPulse 8s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .modal-aurora--lag {
+            inset: auto -15% -45% auto;
+            background: radial-gradient(circle, rgba(108, 142, 255, 0.4), rgba(10, 10, 42, 0));
+            animation-delay: 2s;
+        }
+        #partnership-modal:not(.modal-hidden) .modal-content {
+            animation: modalIn 0.35s ease forwards;
+        }
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: translateY(24px) scale(0.98);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        @keyframes auroraPulse {
+            0%, 100% {
+                transform: scale(1) translate3d(0, 0, 0);
+                opacity: 0.35;
+            }
+            50% {
+                transform: scale(1.1) translate3d(12px, -8px, 0);
+                opacity: 0.55;
+            }
+        }
+        .modal-header {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            padding-bottom: 1rem;
+            z-index: 1;
+        }
+        .modal-header::after {
+            content: '';
+            position: absolute;
+            inset: auto 0 -1rem 0;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(233, 236, 255, 0), rgba(233, 236, 255, 0.45), rgba(233, 236, 255, 0));
+        }
+        .modal-header-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1.5rem;
+        }
+        #close-modal-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 2.75rem;
+            width: 2.75rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(233, 236, 255, 0.2);
+            background: radial-gradient(circle at top, rgba(233, 236, 255, 0.2), rgba(18, 33, 92, 0.6));
+            color: rgba(233, 236, 255, 0.85);
+            transition: all 0.2s ease;
+            font-size: 1.75rem;
+            line-height: 1;
+        }
+        #close-modal-btn:hover,
+        #close-modal-btn:focus-visible {
+            background: rgba(233, 236, 255, 0.2);
+            color: #0a84ff;
+            border-color: rgba(233, 236, 255, 0.35);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.15);
+        }
+        .modal-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+        .modal-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.55rem 0.95rem;
+            border-radius: 9999px;
+            background: rgba(233, 236, 255, 0.08);
+            color: rgba(233, 236, 255, 0.86);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+        }
+        .modal-badge svg {
+            color: #7aa4ff;
+        }
+        .modal-highlights {
+            display: grid;
+            gap: 0.85rem;
+        }
+        @media (min-width: 640px) {
+            .modal-highlights {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+        .modal-highlight {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+            border-radius: 1rem;
+            padding: 1rem 1.1rem;
+            background: linear-gradient(160deg, rgba(233, 236, 255, 0.12), rgba(35, 56, 122, 0.35));
+            border: 1px solid rgba(233, 236, 255, 0.18);
+            box-shadow: 0 10px 25px -18px rgba(5, 8, 32, 0.95);
+            position: relative;
+        }
+        .modal-highlight strong {
+            font-size: 0.95rem;
+            color: #fdfcff;
+        }
+        .modal-highlight span {
+            font-size: 0.8rem;
+            color: rgba(233, 236, 255, 0.7);
+        }
+        .modal-highlight-icon {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 0.75rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(233, 236, 255, 0.22), rgba(117, 144, 255, 0.12));
+            color: #ffd36b;
+        }
+        .modal-shell {
+            display: grid;
+            gap: 1.75rem;
+            position: relative;
+            z-index: 1;
+        }
+        @media (min-width: 768px) {
+            .modal-shell {
+                grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+                align-items: stretch;
+            }
+        }
+        .modal-side {
+            position: relative;
+            border-radius: 1.5rem;
+            background: linear-gradient(135deg, rgba(10, 10, 42, 0.96), rgba(26, 41, 105, 0.92));
+            color: #F8F7F4;
+            padding: 2rem;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            isolation: isolate;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+        }
+        .modal-side::before {
+            content: '';
+            position: absolute;
+            inset: auto auto -60% 45%;
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.22), transparent 65%);
+            z-index: -1;
+            filter: blur(0.5px);
+        }
+        .modal-side::after {
+            content: '';
+            position: absolute;
+            inset: -45% -55% auto auto;
+            width: 240px;
+            height: 240px;
+            background: radial-gradient(circle at top, rgba(71, 84, 205, 0.45), transparent 65%);
+            z-index: -2;
+        }
+        .modal-chip {
+            align-self: flex-start;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 700;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            background-color: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.85);
+        }
+        .modal-side h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        .modal-side p {
+            color: rgba(255, 255, 255, 0.78);
+            line-height: 1.6;
+        }
+        .modal-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: 0.85rem;
+        }
+        .modal-list li {
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+            padding: 0.75rem 0.95rem;
+            border-radius: 1rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        }
+        .modal-insights {
+            display: grid;
+            gap: 0.85rem;
+        }
+        @media (min-width: 640px) {
+            .modal-insights {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+        .modal-insight-card {
+            display: flex;
+            gap: 0.85rem;
+            align-items: center;
+            padding: 0.85rem 1rem;
+            border-radius: 1rem;
+            background: rgba(12, 16, 44, 0.45);
+            border: 1px solid rgba(233, 236, 255, 0.12);
+            box-shadow: 0 12px 24px -16px rgba(5, 8, 32, 0.85);
+        }
+        .modal-insight-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 2.25rem;
+            width: 2.25rem;
+            border-radius: 0.75rem;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.35), rgba(122, 164, 255, 0.3));
+            color: #050820;
+            font-size: 1.1rem;
+        }
+        .modal-insight-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #fdfcff;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        .modal-insight-copy {
+            font-size: 0.8rem;
+            color: rgba(233, 236, 255, 0.72);
+        }
+        .modal-icon {
+            flex-shrink: 0;
+            width: 1.25rem;
+            height: 1.25rem;
+            border-radius: 9999px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 215, 0, 0.2);
+            border: 1px solid rgba(255, 215, 0, 0.5);
+            color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.12);
+        }
+        .modal-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+        }
+        .modal-metric {
+            background: linear-gradient(160deg, rgba(255, 255, 255, 0.12), rgba(10, 10, 42, 0.15));
+            border-radius: 1rem;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        .modal-metric strong {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+        .modal-metric span {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.72);
+        }
+        .modal-divider {
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.32), rgba(255, 255, 255, 0.08));
+        }
+        .modal-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .modal-contact a {
+            color: #F8F7F4;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .modal-contact a:hover {
+            color: var(--gold);
+        }
+        .modal-form {
+            position: relative;
+            background: linear-gradient(160deg, rgba(9, 14, 41, 0.82), rgba(25, 35, 88, 0.7));
+            border-radius: 1.5rem;
+            border: 1px solid rgba(233, 236, 255, 0.12);
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.35rem;
+            max-height: min(65vh, 540px);
+            overflow-y: auto;
+            box-shadow: 0 18px 45px -25px rgba(6, 10, 36, 0.65);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+        }
+        .modal-form::before {
+            content: '';
+            position: absolute;
+            inset: -45px 20% auto;
+            height: 90px;
+            background: linear-gradient(90deg, rgba(233, 236, 255, 0), rgba(233, 236, 255, 0.22), rgba(233, 236, 255, 0));
+            border-radius: 9999px;
+            pointer-events: none;
+        }
+        @media (min-width: 768px) {
+            .modal-form {
+                padding: 2.1rem;
+            }
+        }
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+            position: relative;
+        }
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: rgba(233, 236, 255, 0.92);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+        .form-field::after {
+            content: '';
+            position: absolute;
+            inset: auto 0 -0.2rem 0;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(233, 236, 255, 0), rgba(233, 236, 255, 0.35), rgba(233, 236, 255, 0));
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        .form-field:focus-within::after {
+            opacity: 1;
+        }
+        .form-input,
+        .form-select {
+            width: 100%;
+            border-radius: 0.85rem;
+            border: 1px solid rgba(233, 236, 255, 0.22);
+            background-color: rgba(233, 236, 255, 0.12);
+            color: #f7f8ff;
+            padding: 0.85rem 1rem;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+            font-size: 0.95rem;
+            box-shadow: inset 0 1px 0 rgba(233, 236, 255, 0.3);
+        }
+        .form-select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: none;
+        }
+        .form-input:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: rgba(122, 164, 255, 0.85);
+            box-shadow: 0 0 0 3px rgba(122, 164, 255, 0.25);
+            background-color: rgba(233, 236, 255, 0.2);
+        }
+        .form-input::placeholder {
+            color: rgba(233, 236, 255, 0.55);
+        }
+        .form-helper {
+            font-size: 0.8rem;
+            color: rgba(233, 236, 255, 0.62);
+        }
+        .form-progress {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0.85rem 1rem;
+            border-radius: 1rem;
+            background: rgba(233, 236, 255, 0.08);
+            border: 1px solid rgba(233, 236, 255, 0.16);
+        }
+        .form-progress strong {
+            font-size: 0.85rem;
+            color: rgba(233, 236, 255, 0.9);
+            letter-spacing: 0.02em;
+        }
+        .form-progress-bar {
+            position: relative;
+            flex: 1;
+            height: 6px;
+            border-radius: 9999px;
+            background: rgba(233, 236, 255, 0.18);
+            overflow: hidden;
+        }
+        .form-progress-bar span {
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: linear-gradient(90deg, #7aa4ff, #ffd36b);
+            box-shadow: 0 0 12px rgba(122, 164, 255, 0.45);
+        }
+        .form-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        @media (min-width: 640px) {
+            .form-actions {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+        .button-gradient {
+            background: linear-gradient(120deg, #ffd36b 0%, #ff7f8d 45%, #7d7fff 100%);
+            color: #050820;
+            font-weight: 700;
+            padding: 0.95rem 2.25rem;
+            border-radius: 9999px;
+            box-shadow: 0 20px 32px -16px rgba(16, 26, 90, 0.65);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+        }
+        .button-gradient:hover,
+        .button-gradient:focus-visible {
+            transform: translateY(-2px);
+            box-shadow: 0 26px 36px -18px rgba(16, 26, 90, 0.7);
+            outline: none;
+            filter: brightness(1.05);
+        }
+        .badge-soft {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.45rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: rgba(233, 236, 255, 0.85);
+            background: rgba(233, 236, 255, 0.14);
+            border: 1px solid rgba(233, 236, 255, 0.24);
         }
     </style>
 </head>
 <body class="antialiased">
 
     <!-- Header -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-200">
         <nav class="container mx-auto px-6 lg:px-8 py-4 flex justify-between items-center">
             <a href="index.html" class="flex items-center space-x-3">
                  <svg width="150" height="40" viewBox="0 0 150 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -177,96 +1170,203 @@
             </a>
             <div class="hidden md:flex items-center space-x-8">
                 <a href="index.html" class="text-gray-600 hover:text-royal-blue font-medium transition-colors">Home</a>
+                <a href="about-zurilabs.html" class="text-gray-600 hover:text-royal-blue font-medium transition-colors">About</a>
                 <a href="partners.html" class="text-royal-blue font-semibold transition-colors">Partners</a>
                 <a href="https://n8n.srv895792.hstgr.cloud/form/04d0f255-b238-43e8-ad92-07ec40fa030d" target="_blank" rel="noopener noreferrer" class="bg-gold text-black font-bold px-6 py-2.5 rounded-full hover:bg-gold-dark transition-transform transform hover:scale-105 shadow-md">Join Now</a>
             </div>
-             <!-- Mobile menu can be added here if needed -->
-            <a href="index.html" class="md:hidden text-gray-600 hover:text-royal-blue font-medium transition-colors">Back to Home</a>
+            <button id="partners-mobile-menu-button" class="md:hidden text-gray-700" aria-expanded="false" aria-controls="partners-mobile-menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+                <span class="sr-only">Toggle menu</span>
+            </button>
         </nav>
+        <div id="partners-mobile-menu" class="md:hidden hidden border-t border-gray-200 bg-white/95 backdrop-blur-xl">
+            <div class="px-6 py-4 space-y-3 text-gray-700">
+                <a href="index.html" class="block hover:text-royal-blue">Home</a>
+                <a href="about-zurilabs.html" class="block hover:text-royal-blue">About</a>
+                <a href="partners.html" class="block text-royal-blue font-semibold">Partners</a>
+                <a href="https://n8n.srv895792.hstgr.cloud/form/04d0f255-b238-43e8-ad92-07ec40fa030d" target="_blank" rel="noopener noreferrer" class="inline-flex w-full justify-center bg-gold text-black font-semibold px-6 py-2.5 rounded-full hover:bg-gold-dark transition-colors">Join Now</a>
+            </div>
+        </div>
     </header>
 
     <!-- Main Content -->
     <main class="bg-sand-white">
         <!-- Hero Section -->
-        <section class="bg-royal-blue text-white">
-            <div class="container mx-auto px-6 lg:px-8 py-24 text-center">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight">Partner with Africa's AI Vanguard</h1>
-                <p class="mt-6 text-lg md:text-xl text-blue-200 max-w-3xl mx-auto">Unlock a continent of opportunity. We bridge the gap between your innovative tools and Africa's brightest tech talent, creating a powerful ecosystem for mutual growth and market leadership.</p>
+        <section class="hero-section text-white">
+            <span class="hero-sheen" aria-hidden="true"></span>
+            <div class="container mx-auto px-6 lg:px-8 py-24 lg:py-28">
+                <div class="hero-grid">
+                    <div class="hero-copy text-left">
+                        <span class="hero-pill">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path d="M2.5 6.5A2.5 2.5 0 0 1 5 4h4.379a1.5 1.5 0 0 1 1.06.44l2.621 2.621A1.5 1.5 0 0 1 13.5 8.122V13.5a2.5 2.5 0 0 1-2.5 2.5h-6A2.5 2.5 0 0 1 2.5 13.5v-7Z" />
+                                <path d="M6 2.5V4h3.879c.199 0 .39.079.53.22l2.371 2.37c.14.141.22.332.22.53V10h1.5a1.5 1.5 0 0 1 1.5 1.5v4A2.5 2.5 0 0 1 13.5 18h-6a2.5 2.5 0 0 1-2.5-2.5V6a1.5 1.5 0 0 1-1.5-1.5V4a1.5 1.5 0 0 1 1.5-1.5H6Z" />
+                            </svg>
+                            Partnership intelligence hub
+                        </span>
+                        <h1 class="hero-heading mt-6">Partner with <span>Africa's AI vanguard</span></h1>
+                        <p class="mt-6 max-w-2xl">
+                            Unlock a continent of opportunity. Zuri Labs connects your products, capital, and hiring goals with Africa's brightest builders, giving you a trusted entry point into emerging markets.
+                        </p>
+                        <div class="hero-actions">
+                            <button type="button" data-open-modal="partnership" class="button-primary px-8 py-4 text-base md:text-lg shadow-xl">
+                                Start a partnership inquiry
+                            </button>
+                            <a href="https://n8n.srv895792.hstgr.cloud/form/04d0f255-b238-43e8-ad92-07ec40fa030d" target="_blank" rel="noopener noreferrer" class="button-ghost">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12a7.5 7.5 0 0 1 13.036-5.036L12 12m0 0H6m6 0v6" />
+                                </svg>
+                                Download partner deck
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hero-card-stack">
+                        <div class="hero-card">
+                            <div class="hero-card-emoji" aria-hidden="true">🚀</div>
+                            <h3>Launch in weeks, not quarters</h3>
+                            <p>Co-create programs with our operations pod and deploy across hubs in Lagos, Nairobi, Accra, Kigali, and remote talent communities.</p>
+                        </div>
+                        <div class="hero-card hero-card-floating">
+                            <div class="hero-card-emoji" aria-hidden="true">🌍</div>
+                            <h3>Pan-African signal loops</h3>
+                            <p>Tap into real-time market intelligence, pilot-ready cohorts, and on-ground storytellers amplifying your wins.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-metrics mt-16">
+                    <div class="hero-metric">
+                        <strong>9</strong>
+                        <span>Innovation hubs</span>
+                    </div>
+                    <div class="hero-metric">
+                        <strong>18k+</strong>
+                        <span>Builders engaged</span>
+                    </div>
+                    <div class="hero-metric">
+                        <strong>72 hrs</strong>
+                        <span>Average kickoff</span>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Value Proposition Section -->
-        <section class="py-24">
+        <section class="section-wrapper">
             <div class="container mx-auto px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto">
-                    <h2 class="text-3xl md:text-4xl font-bold text-royal-blue">A Symbiotic Ecosystem for Growth</h2>
-                    <p class="mt-4 text-gray-700 text-lg">Our partnership model is designed for mutual benefit. By providing value to our community, you gain unparalleled access to a dynamic market and a pipeline of skilled, motivated talent.</p>
+                <div class="section-header text-center max-w-3xl mx-auto">
+                    <h2>A symbiotic ecosystem for growth</h2>
+                    <p class="mt-4">Create value for thousands of ambitious professionals while opening new customer, talent, and storytelling pipelines across the continent.</p>
                 </div>
 
-                <div class="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Value for Partners 1 -->
-                    <div class="bg-white p-8 rounded-lg shadow-sm">
-                        <div class="w-12 h-12 mb-4 bg-royal-blue/10 rounded-full flex items-center justify-center">
-                            <svg class="w-6 h-6 text-royal-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a3 3 0 015.288 0M12 14a3 3 0 100-6 3 3 0 000 6z"></path></svg>
+                <div class="value-grid">
+                    <article class="value-card">
+                        <div class="value-card-content">
+                            <span class="value-icon">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 20h5v-2a3 3 0 0 0-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 0 1 5.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a3 3 0 0 1 5.288 0M12 14a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/></svg>
+                            </span>
+                            <h3>Access verified talent</h3>
+                            <p>Connect with curated cohorts of product managers, AI engineers, and storytellers ready to deploy. Reduce hiring friction with embedded cultural fluency and support.</p>
                         </div>
-                        <h3 class="text-xl font-bold text-royal-blue">Access Verified Talent</h3>
-                        <p class="mt-2 text-gray-600">Connect with a curated pool of job-ready professionals and rising stars in AI, data science, and automation. Reduce your hiring friction and find the right fit, faster.</p>
-                    </div>
-                    <!-- Value for Partners 2 -->
-                    <div class="bg-white p-8 rounded-lg shadow-sm">
-                        <div class="w-12 h-12 mb-4 bg-royal-blue/10 rounded-full flex items-center justify-center">
-                            <svg class="w-6 h-6 text-royal-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                    </article>
+
+                    <article class="value-card">
+                        <div class="value-card-content">
+                            <span class="value-icon">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 7h8m0 0v8m0-8-8 8-4-4-6 6"/></svg>
+                            </span>
+                            <h3>Gain market intelligence</h3>
+                            <p>Understand user needs and product-market fit with weekly signal briefings, customer interviews, and activation data from pilots across nine innovation hubs.</p>
                         </div>
-                        <h3 class="text-xl font-bold text-royal-blue">Gain Market Intelligence</h3>
-                        <p class="mt-2 text-gray-600">Gain on-the-ground insights into the African tech landscape. Understand user needs, test products, and get direct feedback from a highly engaged community of tech experts and users.</p>
-                    </div>
-                    <!-- Value for Partners 3 -->
-                    <div class="bg-white p-8 rounded-lg shadow-sm">
-                        <div class="w-12 h-12 mb-4 bg-royal-blue/10 rounded-full flex items-center justify-center">
-                            <svg class="w-6 h-6 text-royal-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.196-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.783-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+                    </article>
+
+                    <article class="value-card">
+                        <div class="value-card-content">
+                            <span class="value-icon">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.813 15.904 9 18.75l2.625-.75m-2.812-2.096a6.001 6.001 0 0 1-3.675-8.492 6 6 0 0 1 7.822-2.896 4.5 4.5 0 0 1 6.852 5.107 4.5 4.5 0 0 1-3.304 7.54"/></svg>
+                            </span>
+                            <h3>Co-create community moments</h3>
+                            <p>Design residencies, hack sprints, and storytelling series that celebrate builders using your tools. We orchestrate the logistics, you collect the success stories.</p>
                         </div>
-                        <h3 class="text-xl font-bold text-royal-blue">Enhance Brand Leadership</h3>
-                        <p class="mt-2 text-gray-600">Position your brand as a key enabler of Africa's tech future. Showcase your tools and expertise through workshops, content, and community events, building lasting brand loyalty.</p>
-                    </div>
+                    </article>
+
+                    <article class="value-card">
+                        <div class="value-card-content">
+                            <span class="value-icon">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M14.25 7.5 12 9.75 9.75 7.5m2.25 6 2.25-2.25L12 9 9.75 11.25 12 13.5Zm0 3.75 2.25-2.25L12 12.75l-2.25 2.25L12 17.25Zm-9-3.75a2.25 2.25 0 1 1 4.5 0 2.25 2.25 0 0 1-4.5 0ZM3 6.75a2.25 2.25 0 1 1 4.5 0 2.25 2.25 0 0 1-4.5 0Zm0 10.5a2.25 2.25 0 1 1 4.5 0 2.25 2.25 0 0 1-4.5 0Zm10.5 0a2.25 2.25 0 1 1 4.5 0 2.25 2.25 0 0 1-4.5 0ZM13.5 6a4.5 4.5 0 1 1 7.5 3.422V6.75A2.25 2.25 0 0 0 18.75 4.5H13.5ZM21 12.75V11.5a2.25 2.25 0 0 0-4.5 0v1.25A4.5 4.5 0 0 1 21 12.75Zm-4.5 4.5V16a2.25 2.25 0 0 0-4.5 0v1.25a4.5 4.5 0 0 1 4.5 0Z"/></svg>
+                            </span>
+                            <h3>Build brand leadership</h3>
+                            <p>Position your company as a champion of African innovation through custom content, co-branded showcases, and thought leadership with our media studio.</p>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
 
         <!-- Partnership Tiers Section -->
-        <section class="py-24 bg-white">
+        <section class="section-wrapper bg-white/70">
             <div class="container mx-auto px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto">
-                    <h2 class="text-3xl md:text-4xl font-bold text-royal-blue">Ways to Partner With Us</h2>
-                    <p class="mt-4 text-gray-700 text-lg">We offer flexible partnership models to align with your strategic goals.</p>
+                <div class="section-header text-center max-w-3xl mx-auto">
+                    <h2>Ways to partner with us</h2>
+                    <p class="mt-4">Choose the runway that matches your roadmap. Each tier includes a dedicated strategist, launch concierge, and data-backed reporting.</p>
                 </div>
-                <div class="mt-16 grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                    <div>
-                        <h3 class="text-2xl font-bold text-royal-blue mb-2">Technology & Tool Partners</h3>
-                        <p class="text-gray-600">Are you a provider of AI, automation, or developer tools? Offer our members exclusive discounts, extended trials, or educational licenses. In return, gain a dedicated user base, valuable feedback, and powerful case studies from the African market.</p>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-royal-blue mb-2">Hiring & Talent Partners</h3>
-                        <p class="text-gray-600">Looking to build your tech team? Partner with us to get priority access to our talent pipeline. Sponsor a hackathon, post exclusive job listings, or engage with members in our accelerator programs to find your next great hire.</p>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-royal-blue mb-2">Content & Training Partners</h3>
-                        <p class="text-gray-600">Share your expertise and build authority. Co-host webinars, provide expert speakers for our events, or contribute to our knowledge hub. We provide the platform and the audience; you provide the industry-leading insights.</p>
-                    </div>
-                     <div>
-                        <h3 class="text-2xl font-bold text-royal-blue mb-2">Ecosystem & Community Partners</h3>
-                        <p class="text-gray-600">Are you a tech hub, university, or community organization? Let's collaborate on events, share resources, and cross-promote to build a stronger, more connected tech ecosystem for everyone.</p>
-                    </div>
+                <div class="tier-grid max-w-5xl mx-auto">
+                    <article class="tier-card">
+                        <span class="tier-badge">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                            Tool stack launchpad
+                        </span>
+                        <h3 class="tier-title">Technology & tool partners</h3>
+                        <p class="tier-copy">Deploy pilots, offer premium trials, and co-build curriculum that embeds your tooling in our accelerators. Capture product feedback from diverse industries and markets.</p>
+                    </article>
+
+                    <article class="tier-card">
+                        <span class="tier-badge">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.115 5.19 5 12.5l4.01.668M6.115 5.19a48.507 48.507 0 0 1 11.77 0M6.115 5.19 5.21 3.79A1.125 1.125 0 0 1 6.248 2.25h11.504a1.125 1.125 0 0 1 1.038 1.54l-.904 1.4M7.5 20.25h9a2.25 2.25 0 0 0 2.25-2.25V6.741a48.627 48.627 0 0 0-13.5 0V18a2.25 2.25 0 0 0 2.25 2.25Zm3-6.082a.375.375 0 1 0-.75 0 .375.375 0 0 0 .75 0Zm6 0a.375.375 0 1 0-.75 0 .375.375 0 0 0 .75 0Z"/></svg>
+                            Talent velocity
+                        </span>
+                        <h3 class="tier-title">Hiring & talent partners</h3>
+                        <p class="tier-copy">Source experienced operators and emerging talent with conversion-ready funnels, on-site showcases, and curated interview loops.</p>
+                    </article>
+
+                    <article class="tier-card">
+                        <span class="tier-badge">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12m-12 4.5h12m-12 4.5H12m-5.159-9.75H6a2.25 2.25 0 0 0-2.25 2.25v12A2.25 2.25 0 0 0 6 22.5h9.75A2.25 2.25 0 0 0 18 20.25V19"/></svg>
+                            Storytelling studio
+                        </span>
+                        <h3 class="tier-title">Content & training partners</h3>
+                        <p class="tier-copy">Lead masterclasses, publish research, and co-create playbooks with our media team. We amplify your expertise to a pan-African audience hungry for guidance.</p>
+                    </article>
+
+                    <article class="tier-card">
+                        <span class="tier-badge">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25v-1.5a2.25 2.25 0 0 0-2.25-2.25h-3a2.25 2.25 0 0 0-2.25 2.25v1.5m-3 0h12a2.25 2.25 0 0 1 2.25 2.25v9.75A2.25 2.25 0 0 1 18.75 19.5H5.25A2.25 2.25 0 0 1 3 17.25V7.5A2.25 2.25 0 0 1 5.25 5.25Z"/></svg>
+                            Ecosystem alliance
+                        </span>
+                        <h3 class="tier-title">Ecosystem & community partners</h3>
+                        <p class="tier-copy">Collaborate on summits, demo tours, scholarships, and shared programming to strengthen local innovation economies together.</p>
+                    </article>
                 </div>
             </div>
         </section>
 
         <!-- CTA Section -->
-        <section class="bg-royal-blue text-white my-24 py-20 px-6 rounded-2xl">
-            <div class="text-center max-w-3xl mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold">Let's Build the Future, Together.</h2>
-                <p class="mt-4 text-blue-200 text-lg">Ready to explore a partnership with Zuri Labs? We'd love to discuss how we can create value together.</p>
-                <div class="mt-10">
-                     <button id="open-modal-btn" class="bg-gold text-black font-bold px-8 py-4 rounded-full hover:bg-gold-dark transition-transform transform hover:scale-105 text-lg shadow-lg">Start a Partnership Inquiry</button>
+        <section class="my-24 px-6">
+            <div class="cta-section py-20 px-6 sm:px-10 lg:px-16 text-white text-center">
+                <div class="cta-content max-w-3xl mx-auto">
+                    <div class="cta-badges">
+                        <span class="cta-badge">Avg. response 24 hrs</span>
+                        <span class="cta-badge">Dedicated strategist</span>
+                        <span class="cta-badge">Co-created launch plan</span>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">Let's build the future, together.</h2>
+                    <p class="mt-6 text-blue-100/90 text-lg">Share your goals and we'll tailor a partnership track that amplifies your impact in Africa's fast-growing innovation corridors.</p>
+                    <div class="mt-10 flex flex-col sm:flex-row sm:justify-center sm:items-center gap-3">
+                        <button type="button" data-open-modal="partnership" class="button-primary px-10 py-4 text-lg shadow-xl">Start a partnership inquiry</button>
+                        <a href="mailto:partners@zurilabs.co" class="button-ghost">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25H4.5a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15A2.25 2.25 0 0 0 2.25 6.75m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.5a2.25 2.25 0 0 1-2.22 0l-7.5-4.5a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg>
+                            Email our partnerships desk
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -277,7 +1377,7 @@
         <div class="container mx-auto px-6 lg:px-8 py-12">
             <div class="text-center text-gray-500 text-sm">
                 <ul class="flex justify-center space-x-6 mb-4">
-                    <li><a href="index.html#about" class="hover:text-royal-blue">About</a></li>
+                    <li><a href="about-zurilabs.html" class="hover:text-royal-blue">About</a></li>
                     <li><a href="partners.html" class="hover:text-royal-blue">Partners</a></li>
                     <li><a href="privacy-policy.html" class="hover:text-royal-blue">Privacy</a></li>
                     <li><a href="terms-of-service.html" class="hover:text-royal-blue">Terms</a></li>
@@ -292,68 +1392,214 @@
     <div id="partnership-modal" class="modal-hidden fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-0">
         <!-- Overlay -->
         <div id="modal-overlay" class="modal-overlay absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
-        
-        <!-- Modal Content -->
-        <div id="modal-content" class="modal-content bg-white w-full max-w-lg rounded-2xl shadow-2xl z-10 flex flex-col max-h-[90vh] p-8">
-            <div class="flex justify-between items-start">
-                <h2 class="text-2xl font-bold text-royal-blue">Partnership Inquiry</h2>
-                <button id="close-modal-btn" class="text-2xl text-gray-500 hover:text-royal-blue">&times;</button>
-            </div>
-            <p class="mt-2 text-gray-600">Complete the form below, and we'll be in touch shortly.</p>
 
-            <form id="partnership-form" class="mt-6 space-y-4">
-                <div>
-                    <label for="fullName" class="form-label">Full Name</label>
-                    <input type="text" id="fullName" name="fullName" class="form-input" required>
-                </div>
-                <div>
-                    <label for="companyName" class="form-label">Company Name</label>
-                    <input type="text" id="companyName" name="companyName" class="form-input" required>
-                </div>
-                <div>
-                    <label for="workEmail" class="form-label">Work Email</label>
-                    <input type="email" id="workEmail" name="workEmail" class="form-input" required>
-                </div>
-                <div>
-                    <label for="partnershipType" class="form-label">Partnership Type</label>
-                    <div class="relative">
-                        <select id="partnershipType" name="partnershipType" class="form-select" required>
-                            <option value="" disabled selected>Select an option</option>
-                            <option value="Technology & Tool Partner">Technology & Tool Partner</option>
-                            <option value="Hiring & Talent Partner">Hiring & Talent Partner</option>
-                            <option value="Content & Training Partner">Content & Training Partner</option>
-                            <option value="Ecosystem & Community Partner">Ecosystem & Community Partner</option>
-                            <option value="Other">Other</option>
-                        </select>
-                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+        <!-- Modal Content -->
+        <div id="modal-content" class="modal-content w-full max-w-4xl rounded-3xl z-10 max-h-[90vh] p-6 md:p-10 overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="partnership-modal-title">
+            <span class="modal-aurora" aria-hidden="true"></span>
+            <span class="modal-aurora modal-aurora--lag" aria-hidden="true"></span>
+            <div class="modal-header">
+                <div class="modal-header-top">
+                    <div>
+                        <div class="modal-badges">
+                            <span class="badge-soft">Avg. response time &mdash; 24 hours</span>
+                            <span class="modal-badge"><svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 18a1 1 0 0 1-.707-.293l-6-6A1 1 0 0 1 4 10h2V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v6h2a1 1 0 0 1 .707 1.707l-6 6A1 1 0 0 1 10 18Z"/></svg>White-glove onboarding</span>
+                            <span class="modal-badge"><svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M2.293 9.293a1 1 0 0 1 1.414 0L8 13.586l8.293-8.293a1 1 0 0 1 1.414 1.414l-9 9a1 1 0 0 1-1.414 0l-4-4a1 1 0 0 1 0-1.414Z"/></svg>Partnership playbooks</span>
                         </div>
+                        <h2 id="partnership-modal-title" class="mt-4 text-3xl font-bold text-white">Start Your Partnership Conversation</h2>
+                        <p class="mt-2 text-white/70">Share a few details and our partnerships team will design a tailored collaboration roadmap for you.</p>
+                    </div>
+                    <button id="close-modal-btn" type="button" aria-label="Close partnership inquiry form">&times;</button>
+                </div>
+                <div class="modal-highlights" role="list">
+                    <div class="modal-highlight" role="listitem">
+                        <span class="modal-highlight-icon">
+                            <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 2a1 1 0 0 1 .894.553l1.518 3.037 3.354.488a1 1 0 0 1 .555 1.705l-2.426 2.365.573 3.34a1 1 0 0 1-1.451 1.054L10 13.347l-3.017 1.595a1 1 0 0 1-1.451-1.054l.573-3.34-2.426-2.365a1 1 0 0 1 .555-1.705l3.354-.488 1.518-3.037A1 1 0 0 1 10 2Z"/></svg>
+                        </span>
+                        <strong>Dedicated partner pod</strong>
+                        <span>Meet your strategist, content lead, and success manager in a single kickoff call.</span>
+                    </div>
+                    <div class="modal-highlight" role="listitem">
+                        <span class="modal-highlight-icon">
+                            <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M3 4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3.382a1 1 0 0 1-.316.726l-3.764 3.51v2.763a1 1 0 0 1-1.447.894l-2.764-1.382A1 1 0 0 1 8 12.999v-1.38L4.316 8.108A1 1 0 0 1 4 7.382V4Z"/></svg>
+                        </span>
+                        <strong>Stories that travel</strong>
+                        <span>Unlock co-branded case studies and spotlight features tailored to your key markets.</span>
+                    </div>
+                    <div class="modal-highlight" role="listitem">
+                        <span class="modal-highlight-icon">
+                            <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M4 3a1 1 0 0 0-1 1v3.279a1 1 0 0 0 .316.725l7.342 6.808a1 1 0 0 0 1.368 0l4.658-4.317a1 1 0 0 0 0-1.45L11.01 3.293A1 1 0 0 0 10.316 3H4Z"/></svg>
+                        </span>
+                        <strong>Signals you can trust</strong>
+                        <span>Track engagement and conversion benchmarks through your shared partner dashboard.</span>
                     </div>
                 </div>
-                <div>
-                    <label for="message" class="form-label">Message</label>
-                    <textarea id="message" name="message" rows="4" class="form-input" placeholder="Tell us a bit about your organization and how you'd like to partner..."></textarea>
-                </div>
-                <div class="pt-4">
-                    <button type="submit" class="w-full bg-royal-blue text-white font-bold py-3 px-6 rounded-lg hover:bg-opacity-90 transition-colors">Send Inquiry</button>
-                </div>
-            </form>
+            </div>
+
+            <div class="modal-shell">
+                <aside class="modal-side">
+                    <span class="modal-chip">Partner Success Desk</span>
+                    <h3>Co-create bold workforce solutions with the Zuri Labs network.</h3>
+                    <p>Our strategists align curriculum, talent placement, and storytelling so every collaboration launches with clarity and cultural insight.</p>
+                    <ul class="modal-list">
+                        <li>
+                            <span class="modal-icon">
+                                <svg class="h-3.5 w-3.5" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.4 11.2 3.6 8.4l1.12-1.12L6.4 8.96l4.88-4.88L12.4 5.2 6.4 11.2Z" fill="currentColor"/></svg>
+                            </span>
+                            <div>
+                                <strong class="block text-sm text-white">Launch-ready playbooks</strong>
+                                <p class="text-xs text-white/70 leading-relaxed">Receive onboarding plans, key milestones, and asset templates tailored to your market within two days.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="modal-icon">
+                                <svg class="h-3.5 w-3.5" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.4 11.2 3.6 8.4l1.12-1.12L6.4 8.96l4.88-4.88L12.4 5.2 6.4 11.2Z" fill="currentColor"/></svg>
+                            </span>
+                            <div>
+                                <strong class="block text-sm text-white">Global network access</strong>
+                                <p class="text-xs text-white/70 leading-relaxed">Tap into talent communities across 35 markets plus our partner knowledge base and curated demo days.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="modal-icon">
+                                <svg class="h-3.5 w-3.5" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.4 11.2 3.6 8.4l1.12-1.12L6.4 8.96l4.88-4.88L12.4 5.2 6.4 11.2Z" fill="currentColor"/></svg>
+                            </span>
+                            <div>
+                                <strong class="block text-sm text-white">Dedicated measurement</strong>
+                                <p class="text-xs text-white/70 leading-relaxed">Quarterly impact reviews and shared dashboards keep every initiative data-backed.</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="modal-insights">
+                        <div class="modal-insight-card">
+                            <div class="modal-insight-icon" aria-hidden="true">🛰️</div>
+                            <div>
+                                <p class="modal-insight-title">Signal briefings</p>
+                                <p class="modal-insight-copy">Weekly intel drops decode talent demand and ecosystem shifts before they hit the news.</p>
+                            </div>
+                        </div>
+                        <div class="modal-insight-card">
+                            <div class="modal-insight-icon" aria-hidden="true">🤝</div>
+                            <div>
+                                <p class="modal-insight-title">Launch concierge</p>
+                                <p class="modal-insight-copy">A 30-day activation sprint with curated talent, promo assets, and success metrics dialed in.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-metrics">
+                        <div class="modal-metric">
+                            <strong>120+</strong>
+                            <span>Programs activated with partners</span>
+                        </div>
+                        <div class="modal-metric">
+                            <strong>35</strong>
+                            <span>Countries represented in our network</span>
+                        </div>
+                        <div class="modal-metric">
+                            <strong>94%</strong>
+                            <span>Partners renew within the first year</span>
+                        </div>
+                    </div>
+                    <div class="modal-divider"></div>
+                    <div class="modal-contact">
+                        <p class="text-sm text-white/70">Need a quick sync before submitting? Book time with our partner desk or drop us a direct note.</p>
+                        <a href="mailto:partnerships@zurilabs.co">
+                            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l9 6 9-6M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z" /></svg>
+                            partnerships@zurilabs.co
+                        </a>
+                        <a href="contact.html" class="inline-flex items-center gap-2 text-sm text-white/80 hover:text-gold transition-colors">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16h6a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2Zm-3 4h12"/></svg>
+                            Schedule a 15-min intro
+                        </a>
+                    </div>
+                </aside>
+
+                <form id="partnership-form" class="modal-form" novalidate>
+                    <div class="form-progress" aria-hidden="true">
+                        <strong>Partnership fit snapshot</strong>
+                        <div class="form-progress-bar">
+                            <span style="width: 80%;"></span>
+                        </div>
+                        <span class="text-xs font-semibold uppercase tracking-wide text-white/60">3 steps</span>
+                    </div>
+                    <div class="grid gap-4 sm:grid-cols-2">
+                        <div class="form-field">
+                            <label for="fullName" class="form-label">Full Name</label>
+                            <input type="text" id="fullName" name="fullName" class="form-input" autocomplete="name" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="companyName" class="form-label">Company or Organization</label>
+                            <input type="text" id="companyName" name="companyName" class="form-input" autocomplete="organization" required>
+                        </div>
+                    </div>
+                    <div class="grid gap-4 sm:grid-cols-2">
+                        <div class="form-field">
+                            <label for="workEmail" class="form-label">Work Email</label>
+                            <input type="email" id="workEmail" name="workEmail" class="form-input" autocomplete="email" placeholder="name@company.com" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="partnershipType" class="form-label">Partnership Focus</label>
+                            <div class="relative">
+                                <select id="partnershipType" name="partnershipType" class="form-select" required>
+                                    <option value="" disabled selected>Select an option</option>
+                                    <option value="Technology & Tool Partner">Technology & Tool Partner</option>
+                                    <option value="Hiring & Talent Partner">Hiring & Talent Partner</option>
+                                    <option value="Content & Training Partner">Content & Training Partner</option>
+                                    <option value="Ecosystem & Community Partner">Ecosystem & Community Partner</option>
+                                    <option value="Impact & Social Innovation">Impact & Social Innovation</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-white/60">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <label for="message" class="form-label">How would you like to collaborate?</label>
+                        <textarea id="message" name="message" rows="4" class="form-input" placeholder="Tell us about your goals, timelines, or the audience you'd like to reach..."></textarea>
+                        <p class="form-helper">Hint: mention desired timelines, target regions, and success metrics so we can pair you with the right strategist.</p>
+                    </div>
+                    <div class="form-actions">
+                        <p class="text-sm text-white/70">We reply within one business day and schedule a discovery call if needed.</p>
+                        <button type="submit" class="button-gradient">Send Inquiry</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 
     <script>
+        const partnersMenuButton = document.getElementById('partners-mobile-menu-button');
+        const partnersMenu = document.getElementById('partners-mobile-menu');
+        if (partnersMenuButton && partnersMenu) {
+            partnersMenuButton.addEventListener('click', () => {
+                const isOpen = partnersMenu.classList.toggle('hidden');
+                partnersMenuButton.setAttribute('aria-expanded', String(!isOpen));
+            });
+        }
+
         const modal = document.getElementById('partnership-modal');
-        const openBtn = document.getElementById('open-modal-btn');
+        const openButtons = document.querySelectorAll('[data-open-modal="partnership"]');
         const closeBtn = document.getElementById('close-modal-btn');
         const overlay = document.getElementById('modal-overlay');
         const form = document.getElementById('partnership-form');
 
-        const openModal = () => modal.classList.remove('modal-hidden');
+        const firstField = document.getElementById('fullName');
+
+        const openModal = () => {
+            modal.classList.remove('modal-hidden');
+            window.setTimeout(() => firstField?.focus(), 120);
+        };
         const closeModal = () => modal.classList.add('modal-hidden');
 
-        openBtn.addEventListener('click', openModal);
+        openButtons.forEach((button) => button.addEventListener('click', openModal));
         closeBtn.addEventListener('click', closeModal);
         overlay.addEventListener('click', closeModal);
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && !modal.classList.contains('modal-hidden')) {
+                closeModal();
+            }
+        });
 
         form.addEventListener('submit', function(e) {
             e.preventDefault();
