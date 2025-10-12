@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/main.js" defer></script>
 </head>
 <body>
     <header class="header">
@@ -26,11 +27,11 @@
                 <a class="btn btn-secondary" href="index.html#individuals">Join the Community</a>
                 <a class="btn btn-primary" href="partners.html">Partner With Us</a>
             </div>
-            <button class="mobile-toggle" id="mobileToggle" aria-label="Open navigation">
+            <button class="mobile-toggle" type="button" data-mobile-toggle aria-label="Toggle navigation" aria-controls="mobileDrawer" aria-expanded="false">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h14M3 12h14M3 18h14"/></svg>
             </button>
         </div>
-        <div class="mobile-drawer" id="mobileDrawer">
+        <div class="mobile-drawer" id="mobileDrawer" data-mobile-drawer>
             <a href="index.html">Home</a>
             <a href="about-zurilabs.html" aria-current="page">About</a>
             <a href="partners.html">Partners</a>
@@ -255,30 +256,8 @@
                     </form>
                 </div>
             </div>
-            <small>© <span id="year"></span> Zuri Labs. Crafted for Africa's next generation of innovators.</small>
+            <small>© <span data-current-year></span> Zuri Labs. Crafted for Africa's next generation of innovators.</small>
         </div>
     </footer>
-
-    <script>
-        const mobileToggle = document.getElementById('mobileToggle');
-        const mobileDrawer = document.getElementById('mobileDrawer');
-        const year = document.getElementById('year');
-        if (year) {
-            year.textContent = new Date().getFullYear();
-        }
-        if (mobileToggle) {
-            mobileToggle.addEventListener('click', () => {
-                mobileDrawer.classList.toggle('open');
-                const expanded = mobileDrawer.classList.contains('open');
-                mobileToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-            });
-        }
-        mobileDrawer?.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileDrawer.classList.remove('open');
-                mobileToggle?.setAttribute('aria-expanded', 'false');
-            });
-        });
-    </script>
 </body>
 </html>

@@ -35,6 +35,11 @@ body {
   flex-direction: column;
 }
 
+body.is-locked,
+body.drawer-open {
+  overflow: hidden;
+}
+
 main {
   flex: 1;
 }
