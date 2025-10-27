@@ -39,9 +39,12 @@
         }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--royal-blue);
+            background: radial-gradient(circle at 15% 20%, rgba(255, 215, 0, 0.12), transparent 45%),
+                        radial-gradient(circle at 80% 10%, rgba(79, 70, 229, 0.25), transparent 55%),
+                        linear-gradient(160deg, #050515 0%, #0A0A2A 35%, #020212 100%);
             color: var(--sand-white);
             overscroll-behavior-y: none;
+            min-height: 100vh;
         }
         .bg-royal-blue { background-color: var(--royal-blue); }
         .hover\:bg-royal-blue-dark:hover { background-color: #00005a; }
@@ -92,17 +95,146 @@
             color: var(--royal-blue);
         }
         .stat-card {
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 0.75rem;
-            padding: 2rem;
+            position: relative;
+            background: rgba(10, 10, 42, 0.65);
+            border-radius: 1.25rem;
+            padding: 2.5rem 2rem;
             text-align: center;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 60px -40px rgba(10, 10, 42, 0.7);
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            overflow: hidden;
+        }
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            inset: -120% -20%;
+            background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.14) 35%, transparent 70%);
+            transform: rotate(12deg);
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
         .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 40px 80px -50px rgba(10, 10, 42, 0.9);
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+        .stat-card:hover::before {
+            opacity: 1;
+        }
+
+        .benefits-shell {
+            position: relative;
+            overflow: hidden;
+            border-radius: 2rem;
+            padding: 3.5rem 2rem;
+            background: linear-gradient(140deg, rgba(10, 10, 42, 0.92) 0%, rgba(30, 18, 70, 0.88) 55%, rgba(14, 31, 75, 0.9) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 50px 120px -60px rgba(5, 5, 30, 0.85);
+        }
+        .benefits-shell::before,
+        .benefits-shell::after {
+            content: '';
+            position: absolute;
+            border-radius: 999px;
+            filter: blur(60px);
+            opacity: 0.75;
+        }
+        .benefits-shell::before {
+            width: 420px;
+            height: 420px;
+            top: -140px;
+            right: -120px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.28), transparent 60%);
+        }
+        .benefits-shell::after {
+            width: 360px;
+            height: 360px;
+            bottom: -160px;
+            left: -120px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.25), transparent 65%);
+        }
+        @media (min-width: 1024px) {
+            .benefits-shell {
+                padding: 4.5rem 4rem;
+            }
+        }
+
+        .benefit-card {
+            position: relative;
+            background: linear-gradient(160deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.04));
+            border-radius: 1.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            padding: 2.75rem 2.5rem;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 35px 80px -55px rgba(5, 5, 30, 0.85);
+        }
+        .benefit-card::after {
+            content: '';
+            position: absolute;
+            inset: 1.5px;
+            border-radius: inherit;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            pointer-events: none;
+        }
+        .benefit-card h3 {
+            color: var(--sand-white);
+        }
+        .benefit-card p {
+            color: rgba(248, 247, 244, 0.8);
+        }
+
+        .benefit-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.55rem 1.5rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, rgba(255, 215, 0, 0.25), rgba(168, 85, 247, 0.22));
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            color: rgba(255, 255, 255, 0.92);
+        }
+
+        .benefit-list {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .benefit-list li {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            color: rgba(248, 247, 244, 0.9);
+        }
+        .benefit-icon {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.9), rgba(255, 184, 0, 0.6));
+            color: var(--royal-blue);
+            box-shadow: 0 15px 30px -20px rgba(255, 215, 0, 0.9);
+        }
+        .benefit-icon svg {
+            width: 22px;
+            height: 22px;
+        }
+        .benefit-card strong {
+            color: #fff;
+        }
+
+        .benefit-footer {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2.5rem;
         }
         #hero-section {
             position: relative;
@@ -112,6 +244,16 @@
             background-color: var(--royal-blue);
             overflow: hidden;
         }
+        #hero-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.25), transparent 55%),
+                        radial-gradient(circle at 80% 70%, rgba(56, 189, 248, 0.18), transparent 45%),
+                        linear-gradient(135deg, rgba(10, 10, 42, 0.4) 0%, rgba(1, 2, 40, 0.9) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
         #hero-canvas {
             position: absolute;
             top: 0;
@@ -120,6 +262,185 @@
             height: 100%;
             z-index: 0;
             filter: brightness(1.2);
+        }
+
+        .hero-card {
+            position: relative;
+            border-radius: 1.25rem;
+            padding: 1.75rem;
+            background: linear-gradient(160deg, rgba(15, 15, 60, 0.8) 0%, rgba(8, 8, 45, 0.55) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 25px 45px -35px rgba(2, 12, 64, 0.9);
+            overflow: hidden;
+        }
+        .hero-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top right, rgba(255, 215, 0, 0.2), transparent 40%);
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .glass-panel {
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            background: linear-gradient(140deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.02));
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 1.25rem;
+            box-shadow: 0 25px 70px -40px rgba(9, 9, 45, 0.85);
+        }
+
+        .neon-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.25rem;
+            border-radius: 999px;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            background: linear-gradient(90deg, rgba(255, 215, 0, 0.25), rgba(168, 85, 247, 0.2));
+            border: 1px solid rgba(255, 215, 0, 0.35);
+            box-shadow: 0 10px 25px -15px rgba(255, 215, 0, 0.6);
+        }
+
+        .aurora-glow {
+            position: absolute;
+            width: 480px;
+            height: 480px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.35), transparent 60%);
+            filter: blur(45px);
+            opacity: 0.8;
+            z-index: 0;
+        }
+
+        #header-nav a.active {
+            color: #fff;
+        }
+        #header-nav a.active::after {
+            width: 100%;
+        }
+        #mobile-menu a.active {
+            color: var(--gold);
+        }
+
+        #header {
+            backdrop-filter: none;
+        }
+        #header.scrolled {
+            background-color: rgba(10, 10, 42, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFD700' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .header-progress {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.08);
+            overflow: hidden;
+        }
+        #scroll-progress {
+            display: block;
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, rgba(255, 215, 0, 0.9), rgba(96, 165, 250, 0.85));
+            transform-origin: left;
+        }
+
+        .blueprint-shell {
+            position: relative;
+            border-radius: 2rem;
+            padding: 3rem;
+            background: radial-gradient(circle at 20% 20%, rgba(255, 215, 0, 0.25), rgba(10, 10, 42, 0.85) 55%),
+                        radial-gradient(circle at 80% 0%, rgba(168, 85, 247, 0.35), transparent 60%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 50px 120px -80px rgba(0, 0, 0, 0.9);
+            overflow: hidden;
+        }
+        .blueprint-shell::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.12), transparent 55%);
+            pointer-events: none;
+        }
+
+        .blueprint-nav {
+            display: grid;
+            gap: 0.75rem;
+        }
+        .blueprint-nav button {
+            width: 100%;
+            padding: 0.85rem 1.25rem;
+            border-radius: 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.95rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: transform 0.3s ease, border 0.3s ease, background 0.3s ease;
+        }
+        .blueprint-nav button:hover {
+            transform: translateX(4px);
+            border-color: rgba(255, 215, 0, 0.4);
+        }
+        .blueprint-nav button[aria-selected="true"] {
+            background: linear-gradient(120deg, rgba(255, 215, 0, 0.22), rgba(79, 70, 229, 0.18));
+            border-color: rgba(255, 215, 0, 0.45);
+            box-shadow: 0 18px 35px -28px rgba(255, 215, 0, 0.8);
+        }
+
+        .blueprint-panel {
+            display: none;
+            max-height: 520px;
+            overflow-y: auto;
+            padding-right: 0.75rem;
+        }
+        .blueprint-panel.active {
+            display: block;
+        }
+        .blueprint-panel h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+        .blueprint-panel h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+        .blueprint-panel p {
+            color: rgba(248, 247, 244, 0.85);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        .blueprint-panel ul {
+            list-style: disc;
+            padding-left: 1.25rem;
+            color: rgba(248, 247, 244, 0.85);
+            margin-bottom: 1.5rem;
+        }
+        .blueprint-metric {
+            padding: 1.5rem;
+            border-radius: 1rem;
+            background: rgba(10, 10, 42, 0.55);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+        }
+
+        @media (max-width: 1024px) {
+            .blueprint-shell {
+                padding: 2rem;
+            }
+            .blueprint-panel {
+                max-height: none;
+            }
         }
 
         /* Afrofuturistic Header Enhancements */
@@ -227,7 +548,7 @@
 <body class="antialiased bg-royal-blue text-sand-white">
 
     <!-- Header -->
-    <header id="header" class="bg-transparent fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <header id="header" class="bg-transparent fixed top-0 left-0 right-0 z-50 transition-all duration-300 relative">
         <nav class="container mx-auto px-6 lg:px-8 py-4 flex justify-between items-center">
             <a href="#" id="header-logo" class="flex items-center space-x-3">
                  <svg width="150" height="40" viewBox="0 0 150 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -244,20 +565,27 @@
                 </svg>
             </a>
             <div id="header-nav" class="hidden md:flex items-center space-x-8">
-                <a href="#about" class="text-gray-300 hover:text-white font-medium transition-colors">About</a>
-                <a href="#benefits" class="text-gray-300 hover:text-white font-medium transition-colors">For Individuals</a>
+                <a href="about-zurilabs.html" class="text-gray-300 hover:text-white font-medium transition-colors">About</a>
+                <a href="#about" data-nav-link="about" class="text-gray-300 hover:text-white font-medium transition-colors">Insights</a>
+                <a href="#blueprint" data-nav-link="blueprint" class="text-gray-300 hover:text-white font-medium transition-colors">Blueprint</a>
+                <a href="#benefits" data-nav-link="benefits" class="text-gray-300 hover:text-white font-medium transition-colors">For Individuals</a>
                 <a href="partners.html" class="text-gray-300 hover:text-white font-medium transition-colors">For Partners</a>
-                <a href="#join" class="button button-primary">Join Now</a>
+                <a href="#join" data-nav-link="join" class="button button-primary">Join Now</a>
             </div>
             <button id="mobile-menu-button" class="md:hidden text-white">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
         </nav>
         <div id="mobile-menu" class="hidden md:hidden bg-royal-blue px-6 pb-4 space-y-2">
-            <a href="#about" class="block text-gray-300 hover:text-white font-medium py-2">About</a>
-            <a href="#benefits" class="block text-gray-300 hover:text-white font-medium py-2">For Individuals</a>
+            <a href="about-zurilabs.html" class="block text-gray-300 hover:text-white font-medium py-2">About</a>
+            <a href="#about" data-nav-link="about" class="block text-gray-300 hover:text-white font-medium py-2">Insights</a>
+            <a href="#blueprint" data-nav-link="blueprint" class="block text-gray-300 hover:text-white font-medium py-2">Blueprint</a>
+            <a href="#benefits" data-nav-link="benefits" class="block text-gray-300 hover:text-white font-medium py-2">For Individuals</a>
             <a href="partners.html" class="block text-gray-300 hover:text-white font-medium py-2">For Partners</a>
-            <a href="#join" class="block bg-gold text-black text-center font-bold mt-2 px-5 py-2.5 rounded-full hover:bg-gold-dark transition-colors">Join Now</a>
+            <a href="#join" data-nav-link="join" class="block bg-gold text-black text-center font-bold mt-2 px-5 py-2.5 rounded-full hover:bg-gold-dark transition-colors">Join Now</a>
+        </div>
+        <div class="header-progress">
+            <span id="scroll-progress"></span>
         </div>
     </header>
 
@@ -266,15 +594,56 @@
         <canvas id="hero-canvas"></canvas>
         <div class="relative z-10 h-full flex items-center animate-fade-in">
             <div class="container mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2">
-                <div class="text-left flex flex-col justify-center">
+                <div class="text-left flex flex-col justify-center space-y-8">
+                    <span class="neon-chip">
+                        <span class="w-2 h-2 rounded-full bg-gold inline-flex"></span>
+                        Africa's AI Nexus
+                    </span>
                     <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black text-white leading-tight tracking-tight glow-white">Crafting the Future of African Tech.</h1>
-                    <p class="mt-6 text-lg md:text-xl text-gray-200 max-w-xl drop-shadow-md">Zuri Labs is the heart of Africa's AI ecosystem. We are the NEXUS—a collective of builders and disruptors dedicated to sharing knowledge, amplifying our global visibility, and creating beautifully crafted solutions.</p>
-                    <div class="mt-10 flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4">
+                    <p class="text-lg md:text-xl text-gray-200 max-w-2xl drop-shadow-md">Zuri Labs unites next-gen experts and users of AI across the continent. We translate ambition into execution with collective intelligence, shared infrastructure, and an unapologetically Pan-African design language.</p>
+                    <div class="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4">
                         <a href="https://n8n.srv895792.hstgr.cloud/form/04d0f255-b238-43e8-ad92-07ec40fa030d" target="_blank" rel="noopener noreferrer" class="button-primary">Join The NEXUS</a>
                         <a href="partners.html" class="button-secondary">Partner With Us</a>
                     </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 pt-6">
+                        <div class="hero-card">
+                            <p class="text-sm uppercase tracking-wide text-gray-300">AI Adoption</p>
+                            <p class="mt-2 text-3xl font-bold text-gold">93%</p>
+                            <p class="text-sm text-gray-300 mt-2">of Nigerian organisations are already activating AI—Zuri Labs keeps them future-fit.</p>
+                        </div>
+                        <div class="hero-card">
+                            <p class="text-sm uppercase tracking-wide text-gray-300">Talent Gap</p>
+                            <p class="mt-2 text-3xl font-bold text-gold">85%</p>
+                            <p class="text-sm text-gray-300 mt-2">Graduates who still need practical digital skills. We turn potential into impact.</p>
+                        </div>
+                        <div class="hero-card">
+                            <p class="text-sm uppercase tracking-wide text-gray-300">Community Ambition</p>
+                            <p class="mt-2 text-3xl font-bold text-gold">Africa's NEXUS</p>
+                            <p class="text-sm text-gray-300 mt-2">A living laboratory for experiments, co-creation, and cross-border collaboration.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="hidden md:block"></div>
+                <div class="relative hidden md:flex items-center justify-end">
+                    <span class="aurora-glow -top-24 -right-24 hidden lg:block"></span>
+                    <div class="glass-panel max-w-md w-full p-8 space-y-6">
+                        <h3 class="text-2xl font-semibold text-white">Why Zuri Labs Now?</h3>
+                        <p class="text-gray-200">Nigeria's digital economy is scaling faster than its talent supply. Zuri Labs is the kinetic platform aligning skills, community, and opportunity for Africa's tech decade.</p>
+                        <ul class="space-y-3 text-gray-300">
+                            <li class="flex items-start gap-3">
+                                <span class="mt-1 w-2 h-2 rounded-full bg-gold"></span>
+                                Collective bargaining for AI tooling, cloud credits, and training access.
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="mt-1 w-2 h-2 rounded-full bg-gold"></span>
+                                Mobile-first learning experiences engineered for bandwidth realities.
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="mt-1 w-2 h-2 rounded-full bg-gold"></span>
+                                A bridge between diaspora expertise and local builders to fuel brain circulation.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -289,76 +658,125 @@
                 <p class="mt-4 text-gray-700 text-lg">Our tech ecosystem is accelerating, but a critical gap exists. While businesses are rapidly adopting AI, the workforce isn't equipped with the necessary skills. This is the challenge Zuri Labs was built to solve.</p>
             </div>
             <div class="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto animate-slide-in-up">
-                <div class="stat-card bg-white">
+                <div class="stat-card">
                     <div id="stat1" class="text-5xl font-bold text-gold">0%</div>
-                    <p class="mt-2 text-lg text-royal-blue font-semibold">AI Adoption Rate</p>
-                    <p class="mt-1 text-gray-500">of Nigerian organizations have started their AI journey.</p>
+                    <p class="mt-2 text-lg text-white font-semibold">AI Adoption Rate</p>
+                    <p class="mt-1 text-gray-300">of Nigerian organizations have started their AI journey.</p>
                 </div>
-                <div class="stat-card bg-white">
+                <div class="stat-card">
                     <div id="stat2" class="text-5xl font-bold text-gold">0%</div>
-                    <p class="mt-2 text-lg text-royal-blue font-semibold">Digital Skills Gap</p>
-                    <p class="mt-1 text-gray-500">of graduates lack the necessary digital skills for today's jobs.</p>
+                    <p class="mt-2 text-lg text-white font-semibold">Digital Skills Gap</p>
+                    <p class="mt-1 text-gray-300">of graduates lack the necessary digital skills for today's jobs.</p>
                 </div>
-                <div class="stat-card bg-white lg:col-span-1 md:col-span-2">
+                <div class="stat-card lg:col-span-1 md:col-span-2">
                     <div class="text-5xl font-bold text-gold">~20%</div>
-                    <p class="mt-2 text-lg text-royal-blue font-semibold">ICT Contribution to GDP</p>
-                    <p class="mt-1 text-gray-500">underscoring the sector's vital role in the national economy.</p>
+                    <p class="mt-2 text-lg text-white font-semibold">ICT Contribution to GDP</p>
+                    <p class="mt-1 text-gray-300">underscoring the sector's vital role in the national economy.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Value Proposition Tabs -->
-        <section id="benefits" class="py-24 bg-white rounded-2xl shadow-lg text-dark-gray">
-            <div class="text-center max-w-4xl mx-auto animate-slide-in-up">
-                <h2 class="text-3xl md:text-4xl font-bold text-royal-blue">A Platform for Everyone</h2>
-                <p class="mt-4 text-gray-700 text-lg">Zuri Labs is a multi-sided ecosystem designed to deliver tangible value to every participant. Find out how we empower individuals and accelerate businesses.</p>
-            </div>
-            <div class="mt-12 max-w-5xl mx-auto animate-slide-in-up">
-                <div class="flex justify-center border-b border-gray-200">
-                    <button data-tab="individuals" class="tab active text-lg font-semibold text-gray-500 py-3 px-6 border-b-4 border-transparent transition-colors">For Individuals</button>
-                    <button data-tab="businesses" class="tab text-lg font-semibold text-gray-500 py-3 px-6 border-b-4 border-transparent transition-colors">For Businesses</button>
+        <!-- Value Proposition Showcase -->
+        <section id="benefits" class="py-24">
+            <div class="benefits-shell animate-slide-in-up">
+                <div class="relative text-center max-w-3xl mx-auto">
+                    <span class="neon-chip glow-white">Multi-sided impact</span>
+                    <h2 class="mt-6 text-3xl md:text-4xl font-bold text-white">A Platform for Everyone</h2>
+                    <p class="mt-4 text-base md:text-lg text-white/80">Zuri Labs is a multi-sided ecosystem designed to unlock value for every participant. Whether you are an ambitious individual or a growth-minded business, we orchestrate the pathways that turn potential into measurable outcomes.</p>
                 </div>
-                <div id="individuals" class="tab-content mt-8">
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <div>
-                            <h3 class="font-bold text-xl text-royal-blue mb-2">Continuous Learning Pathway</h3>
-                            <p class="text-gray-600">Access practical, industry-aligned courses in AI, automation, and data science to build job-ready skills.</p>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-xl text-royal-blue mb-2">Build a Verifiable Portfolio</h3>
-                            <p class="text-gray-600">Gain real-world experience by working on paid projects from our marketplace, proving your expertise to employers.</p>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-xl text-royal-blue mb-2">Global Network & Mentorship</h3>
-                            <p class="text-gray-600">Connect with peers, industry veterans, and diaspora professionals for guidance and collaboration.</p>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-xl text-royal-blue mb-2">Curated Career Opportunities</h3>
-                            <p class="text-gray-600">Get exclusive access to high-quality local and international jobs from our trusted corporate partners.</p>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-xl text-royal-blue mb-2">Collective Bargaining Power</h3>
-                            <p class="text-gray-600">Benefit from group-negotiated access to premium AI tools, software subscriptions, and educational resources at a fraction of the cost.</p>
+                <div class="relative mt-14 grid gap-10 lg:grid-cols-2">
+                    <div class="benefit-card">
+                        <span class="benefit-tag">For Individuals</span>
+                        <h3 class="mt-6 text-2xl md:text-3xl font-bold leading-tight">Become a Next-Gen Creator</h3>
+                        <p class="mt-3 text-base md:text-lg">Master future-ready skills, build a verified track record, and unlock premium opportunities that accelerate your earning power.</p>
+                        <ul class="benefit-list">
+                            <li>
+                                <span class="benefit-icon">
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                                </span>
+                                <div class="space-y-1">
+                                    <p class="text-lg font-semibold text-white">Continuous Learning Pathway</p>
+                                    <p class="text-sm md:text-base text-white/75">Progress through immersive, industry-aligned modules in AI, automation, and emerging tech built for Africa's realities.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="benefit-icon">
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2"></path></svg>
+                                </span>
+                                <div class="space-y-1">
+                                    <p class="text-lg font-semibold text-white">Verified Portfolio Experiences</p>
+                                    <p class="text-sm md:text-base text-white/75">Work on paid briefs with real stakeholders and capture proof of impact through signed testimonials and deliverables.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="benefit-icon">
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857M15 7a3 3 0 11-6 0 3 3 0 016 0zM12 14a5 5 0 00-5 5v1h10v-1a5 5 0 00-5-5z"></path></svg>
+                                </span>
+                                <div class="space-y-1">
+                                    <p class="text-lg font-semibold text-white">Mentors & Global Network</p>
+                                    <p class="text-sm md:text-base text-white/75">Tap into diaspora experts, community pods, and career coaches who champion your growth and open doors.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="benefit-icon">
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                </span>
+                                <div class="space-y-1">
+                                    <p class="text-lg font-semibold text-white">Curated Career Pipeline</p>
+                                    <p class="text-sm md:text-base text-white/75">Access high-signal roles, freelance gigs, and founder residencies sourced through our corporate and venture network.</p>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="benefit-footer">
+                            <a href="https://n8n.srv895792.hstgr.cloud/form/04d0f255-b238-43e8-ad92-07ec40fa030d" target="_blank" rel="noopener noreferrer" class="button-primary">Join as an Individual</a>
+                            <a href="#blueprint" class="button-secondary">Explore Learning Paths</a>
                         </div>
                     </div>
-                </div>
-                <div id="businesses" class="tab-content mt-8 hidden">
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <div>
-                            <h3 class="font-bold text-xl text-royal-blue mb-2">Solve Your Talent Pipeline</h3>
-                            <p class="text-gray-600">Source, vet, and hire verified tech talent efficiently, reducing recruitment costs and time-to-hire.</p>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-xl text-royal-blue mb-2">Flexible On-Demand Talent</h3>
-                            <p class="text-gray-600">Access specialized skills for specific projects through our marketplace without the overhead of full-time hires.</p>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-xl text-royal-blue mb-2">Upskill Your Existing Team</h3>
-                            <p class="text-gray-600">Leverage our custom corporate training programs to keep your workforce at the cutting edge of technology.</p>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-xl text-royal-blue mb-2">Drive Strategic Innovation</h3>
-                            <p class="text-gray-600">Partner with us on innovation challenges and hackathons to solve business problems and identify top talent.</p>
+                    <div class="benefit-card">
+                        <span class="benefit-tag">For Businesses</span>
+                        <h3 class="mt-6 text-2xl md:text-3xl font-bold leading-tight">Scale with Confident Talent</h3>
+                        <p class="mt-3 text-base md:text-lg">Build resilient teams, accelerate innovation, and de-risk your digital roadmap with a partner engineered for Africa's AI era.</p>
+                        <ul class="benefit-list">
+                            <li>
+                                <span class="benefit-icon">
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                                </span>
+                                <div class="space-y-1">
+                                    <p class="text-lg font-semibold text-white">Curated Talent Bench</p>
+                                    <p class="text-sm md:text-base text-white/75">Source vetted engineers, analysts, and product leaders who are battle-tested on market-relevant projects.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="benefit-icon">
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7h18M3 12h18M3 17h18"></path></svg>
+                                </span>
+                                <div class="space-y-1">
+                                    <p class="text-lg font-semibold text-white">On-Demand Delivery Pods</p>
+                                    <p class="text-sm md:text-base text-white/75">Spin up specialist squads for sprints, pilots, and proof-of-concept builds without long hiring cycles.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="benefit-icon">
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5zm0 0v6"></path></svg>
+                                </span>
+                                <div class="space-y-1">
+                                    <p class="text-lg font-semibold text-white">Workforce Upskilling</p>
+                                    <p class="text-sm md:text-base text-white/75">Deploy tailored enablement tracks that align with your stack, policies, and compliance requirements.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="benefit-icon">
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                </span>
+                                <div class="space-y-1">
+                                    <p class="text-lg font-semibold text-white">Innovation Labs & Co-Creation</p>
+                                    <p class="text-sm md:text-base text-white/75">Activate challenge programs, hackathons, and market research with our community to uncover new revenue plays.</p>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="benefit-footer">
+                            <a href="partners.html" class="button-primary">Engage Zuri Labs</a>
+                            <a href="contact.html" class="button-secondary">Book a Strategy Call</a>
                         </div>
                     </div>
                 </div>
@@ -403,6 +821,129 @@
                     </div>
                     <h3 class="text-xl font-bold text-royal-blue">Corporate Partnerships</h3>
                     <p class="mt-2 text-gray-600">Deep integration with companies to provide recruitment services, custom training, and innovation support.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Zuri Labs Strategic Blueprint Section -->
+        <section id="blueprint" class="py-24 relative text-white">
+            <div class="absolute -top-16 -right-12 w-72 h-72 blur-3xl rounded-full pointer-events-none" style="background: radial-gradient(circle at center, rgba(168, 85, 247, 0.28), rgba(255, 215, 0, 0.12) 65%, transparent 75%);"></div>
+            <div class="absolute -bottom-24 -left-20 w-96 h-96 blur-3xl rounded-full pointer-events-none" style="background: radial-gradient(circle at center, rgba(56, 189, 248, 0.24), rgba(255, 255, 255, 0.12) 55%, transparent 70%);"></div>
+            <div class="container mx-auto px-6 lg:px-8">
+                <div class="blueprint-shell relative">
+                    <div class="grid md:grid-cols-12 gap-10 relative z-10">
+                        <div class="md:col-span-5 space-y-6">
+                            <span class="neon-chip">Zuri Labs Blueprint</span>
+                            <h2 class="text-3xl md:text-4xl font-bold">A Strategic Blueprint for an AI-Powered Tech Community</h2>
+                            <p class="text-gray-200">Nigeria is racing toward a digital-first economy, yet the talent supply is dangerously behind. Zuri Labs exists to fuse ambition with execution—arming Africa's next generation of experts and users in AI, automation, and emerging technology.</p>
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div class="blueprint-metric">
+                                    <p class="text-sm uppercase tracking-wider text-gray-300">ICT Share of GDP</p>
+                                    <p class="mt-2 text-2xl font-semibold text-gold">~20% (Q2 2024)</p>
+                                    <p class="text-sm text-gray-300 mt-2">Proof that digital innovation is now a central engine of Nigeria's economy.</p>
+                                </div>
+                                <div class="blueprint-metric">
+                                    <p class="text-sm uppercase tracking-wider text-gray-300">AI Adoption</p>
+                                    <p class="mt-2 text-2xl font-semibold text-gold">93% of firms</p>
+                                    <p class="text-sm text-gray-300 mt-2">Organisations are deploying AI at scale and need trusted partners to realise ROI.</p>
+                                </div>
+                                <div class="blueprint-metric">
+                                    <p class="text-sm uppercase tracking-wider text-gray-300">Youth Demographic</p>
+                                    <p class="mt-2 text-2xl font-semibold text-gold">60% under 25</p>
+                                    <p class="text-sm text-gray-300 mt-2">A digitally native generation hungry for pathways into the global tech economy.</p>
+                                </div>
+                                <div class="blueprint-metric">
+                                    <p class="text-sm uppercase tracking-wider text-gray-300">Skills Gap</p>
+                                    <p class="mt-2 text-2xl font-semibold text-gold">85% deficit</p>
+                                    <p class="text-sm text-gray-300 mt-2">Graduates lack job-ready skills—Zuri Labs closes the execution gap.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:col-span-7 grid lg:grid-cols-[220px,1fr] gap-6">
+                            <div class="blueprint-nav">
+                                <button type="button" data-blueprint-target="executive" aria-selected="true">Executive Summary</button>
+                                <button type="button" data-blueprint-target="section1">Section 1: The New African Digital Frontier</button>
+                                <button type="button" data-blueprint-target="section2">Section 2: The Human Algorithm</button>
+                                <button type="button" data-blueprint-target="section3">Section 3: The Talent Paradox</button>
+                                <button type="button" data-blueprint-target="section4">Section 4: Zuri Labs Blueprint</button>
+                                <button type="button" data-blueprint-target="section5">Section 5: Conclusion & Outlook</button>
+                            </div>
+                            <div class="space-y-8">
+                                <div class="blueprint-panel active" data-blueprint-panel="executive">
+                                    <h3>Executive Summary</h3>
+                                    <p>Nigeria is at a once-in-a-generation inflection point. A booming digital economy, progressive national policies, and a private sector eager to operationalise AI are colliding with a severe talent shortage. Over 85% of graduates lack the skills needed to power this revolution.</p>
+                                    <p>Zuri Labs is the answer: a community built for Africa's NEXUS—the NExt-gen EXperts and USers of AI, Automation, and Emerging Technology. We champion experimentation, learning, and co-creation while uniting the diaspora with local builders.</p>
+                                    <p>Rather than pursuing capital-intensive moonshots, the blueprint embraces an agile three-year roadmap that scales sustainably. We start with high-impact, low-cost programs and evolve into a continent-spanning collective delivering measurable economic value.</p>
+                                </div>
+                                <div class="blueprint-panel" data-blueprint-panel="section1">
+                                    <h3>Section 1: The New African Digital Frontier</h3>
+                                    <p>Nigeria's technology ecosystem has moved from “emerging” to “accelerating.” The ICT sector now contributes roughly 20% to real GDP and continues to grow despite global headwinds. Government ambitions target a 21% contribution by 2030, validating technology as a national priority.</p>
+                                    <p>AI adoption is already mainstream. A 2025 study shows 93% of Nigerian organisations have begun their AI journey, with more than half implementing solutions beyond the pilot stage. Financial services lead the charge, using AI for customer service automation, software velocity, and marketing optimisation.</p>
+                                    <p>Infrastructure and policy momentum are strong—5G rollout, 107M internet users, and the National Digital Economy Policy and Strategy—but challenges remain. Power reliability, permit delays, and a persistent digital divide demand inclusive, mobile-first solutions.</p>
+                                    <h4>Strategic Implications</h4>
+                                    <ul>
+                                        <li>Launch in a market where demand is already validated by macroeconomic performance.</li>
+                                        <li>Design offerings that help companies maximise AI ROI through talent, training, and governance support.</li>
+                                        <li>Prioritise mobile access, low-bandwidth content, and hybrid online/offline experiences.</li>
+                                    </ul>
+                                    <h4>Digital Economy Snapshot</h4>
+                                    <div class="grid sm:grid-cols-2 gap-4">
+                                        <div class="blueprint-metric">
+                                            <p class="text-sm text-gray-300">Internet Users</p>
+                                            <p class="mt-2 text-xl font-semibold text-gold">107M (45.4% penetration)</p>
+                                            <p class="mt-2 text-sm text-gray-300">A massive, mobile-first audience ready for community-led experiences.</p>
+                                        </div>
+                                        <div class="blueprint-metric">
+                                            <p class="text-sm text-gray-300">Mobile Connections</p>
+                                            <p class="mt-2 text-xl font-semibold text-gold">150M (64% of population)</p>
+                                            <p class="mt-2 text-sm text-gray-300">Validates a design system rooted in mobile convenience and trust.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="blueprint-panel" data-blueprint-panel="section2">
+                                    <h3>Section 2: The Human Algorithm</h3>
+                                    <p>Nigeria's most potent advantage is demographic. With a median age of 18 and more than 60% of citizens under 25, the country houses one of the world's largest digitally native populations. This cohort is entrepreneurial, mobile-first, and actively searching for pathways into AI and emerging tech.</p>
+                                    <p>The modern technologist seeks transparency, community, and global standards. Remote work has reshaped expectations, while a history of financial scams has heightened the demand for trust-centric experiences.</p>
+                                    <h4>The "Japa" Mindset</h4>
+                                    <p>Ambitions to emigrate reflect a desire for world-class opportunities—not disengagement. Zuri Labs positions itself as a “global gateway,” offering mentorship, remote roles, and international exposure so talent can thrive locally while contributing globally.</p>
+                                </div>
+                                <div class="blueprint-panel" data-blueprint-panel="section3">
+                                    <h3>Section 3: The Talent Paradox</h3>
+                                    <p>Despite unprecedented demand for digital skills, formal education remains misaligned with industry needs. Outdated curricula and theory-heavy programs leave graduates without hands-on experience using modern tools.</p>
+                                    <p>This gap fuels a brain drain as skilled professionals pursue better opportunities abroad. Yet the diaspora remains deeply connected—ready to invest capital, time, and expertise if provided with trusted platforms.</p>
+                                    <h4>Opportunity Areas</h4>
+                                    <ul>
+                                        <li>Deploy agile, industry-aligned learning paths rooted in real projects and mentorship.</li>
+                                        <li>Transform “brain drain” into “brain circulation” by engaging diaspora leaders as mentors, investors, and collaborators.</li>
+                                        <li>Create structured bridges between businesses and vetted talent to keep value creation within the ecosystem.</li>
+                                    </ul>
+                                </div>
+                                <div class="blueprint-panel" data-blueprint-panel="section4">
+                                    <h3>Section 4: Zuri Labs Blueprint</h3>
+                                    <p><strong>Mission:</strong> Build a vibrant, inclusive collective of AI users, builders, and disruptors focused on knowledge sharing, collective bargaining, and amplifying Africa's visibility in the global AI ecosystem.</p>
+                                    <p><strong>Vision:</strong> Establish Zuri Labs as the leading African AI community by 2028—driving innovation, securing resources, and shaping narratives worldwide.</p>
+                                    <h4>Core Objectives</h4>
+                                    <ul>
+                                        <li><strong>Knowledge Sharing:</strong> Curate practical playbooks, workflows, and live sessions for emerging tech.</li>
+                                        <li><strong>Collective Bargaining:</strong> Negotiate group discounts on AI tools, cloud services, and premium training.</li>
+                                        <li><strong>Global Visibility:</strong> Showcase African AI builders through media, events, and strategic partnerships.</li>
+                                        <li><strong>Community Growth:</strong> Scale a pan-African network with sustainable governance and funding.</li>
+                                    </ul>
+                                    <h4>Three-Year Roadmap</h4>
+                                    <p><strong>Year 1 (2025-2026) – Foundation:</strong> Launch community platforms (WhatsApp, Discord), build a no-code hub, run monthly virtual meetups, and secure initial tool discounts plus 1–2 strategic partnerships.</p>
+                                    <p><strong>Year 2 (2026-2027) – Scaling:</strong> Expand into additional African countries, introduce mentorship programs and a podcast, negotiate cloud credits, publish a flagship whitepaper, and host the inaugural Zuri Labs AI Summit.</p>
+                                    <p><strong>Year 3 (2027-2028) – Sustainability:</strong> Reach 2,000 members, launch a no-code mobile app, host bi-monthly hackathons, partner with global AI organisations, and establish revenue via premium memberships and sponsorships.</p>
+                                    <h4>Tool Stack & Risk Mitigation</h4>
+                                    <p>Operate lean with WhatsApp, Discord, Carrd/Webflow, Airtable, Zoom, and Mailchimp. Mitigate low engagement through high-value programming, safeguard funding with early sponsorships, and amplify visibility via influencer partnerships.</p>
+                                </div>
+                                <div class="blueprint-panel" data-blueprint-panel="section5">
+                                    <h3>Section 5: Conclusion & Future Outlook</h3>
+                                    <p>The moment is urgent. By tackling the talent paradox head-on, Zuri Labs becomes more than a community—it is critical economic infrastructure for Africa's tech decade.</p>
+                                    <p>Through disciplined execution of this blueprint, Zuri Labs will cultivate innovators, entrepreneurs, and leaders who anchor Nigeria's digital transformation while exporting excellence across the continent and the globe.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -467,8 +1008,8 @@
                     <div>
                         <h3 class="font-semibold text-white">Explore</h3>
                         <ul class="mt-4 space-y-2">
-                            <li><a href="#about" class="text-gray-400 hover:text-gold">About Us</a></li>
-                            <li><a href="#benefits" class="text-gray-400 hover:text-gold">Benefits</a></li>
+                            <li><a href="about-zurilabs.html" class="text-gray-400 hover:text-gold">About Zuri Labs</a></li>
+                            <li><a href="#benefits" class="text-gray-400 hover:text-gold">Individuals</a></li>
                             <li><a href="partners.html" class="text-gray-400 hover:text-gold">Partners</a></li>
                         </ul>
                     </div>
@@ -476,7 +1017,7 @@
                         <h3 class="font-semibold text-white">Engage</h3>
                         <ul class="mt-4 space-y-2">
                             <li><a href="https://n8n.srv895792.hstgr.cloud/form/04d0f255-b238-43e8-ad92-07ec40fa030d" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-gold">Join Community</a></li>
-                            <li><a href="#about" class="text-gray-400 hover:text-gold">Our Mission</a></li>
+                            <li><a href="about-zurilabs.html#section-1" class="text-gray-400 hover:text-gold">Our Mission</a></li>
                             <li><a href="contact.html" class="text-gray-400 hover:text-gold">Contact Us</a></li>
                         </ul>
                     </div>
@@ -515,20 +1056,72 @@
         (function() {
             // Header scroll effect
             const header = document.getElementById('header');
+            const scrollProgress = document.getElementById('scroll-progress');
+            const navLinkElements = Array.from(document.querySelectorAll('[data-nav-link]'));
+            const visibleSections = new Map();
+
+            const setActiveNav = (id) => {
+                if (!id) return;
+                navLinkElements.forEach(link => {
+                    const isActive = link.dataset.navLink === id;
+                    link.classList.toggle('active', isActive);
+                    if (isActive) {
+                        link.setAttribute('aria-current', 'page');
+                    } else {
+                        link.removeAttribute('aria-current');
+                    }
+                });
+            };
+
+            const updateScrollProgress = () => {
+                if (!scrollProgress) return;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const progress = docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
+                scrollProgress.style.width = `${progress}%`;
+            };
+
             const handleScroll = () => {
                 if (window.scrollY > 50) {
                     header.classList.add('scrolled', 'shadow-lg');
                 } else {
                     header.classList.remove('scrolled', 'shadow-lg');
                 }
+                updateScrollProgress();
             };
             window.addEventListener('scroll', handleScroll);
             handleScroll();
+
+            const sectionIds = [...new Set(navLinkElements.map(link => link.dataset.navLink).filter(Boolean))];
+            const sections = sectionIds
+                .map(id => ({ id, el: document.getElementById(id) }))
+                .filter(section => section.el);
+
+            const navObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        visibleSections.set(entry.target.id, entry.intersectionRatio);
+                    } else {
+                        visibleSections.delete(entry.target.id);
+                    }
+                });
+                if (visibleSections.size) {
+                    const [activeId] = [...visibleSections.entries()].sort((a, b) => b[1] - a[1])[0];
+                    setActiveNav(activeId);
+                }
+            }, { threshold: [0.45, 0.6, 0.8] });
+
+            sections.forEach(section => navObserver.observe(section.el));
+            if (sections.length) {
+                setActiveNav(sections[0].id);
+            }
 
             // Mobile Menu
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+            navLinkElements
+                .filter(link => link.closest('#mobile-menu'))
+                .forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
 
             // Tabs
             const tabs = document.querySelectorAll('.tab');
@@ -539,6 +1132,19 @@
                     tabs.forEach(t => t.classList.remove('active'));
                     tab.classList.add('active');
                     tabContents.forEach(content => { content.id === target ? content.classList.remove('hidden') : content.classList.add('hidden'); });
+                });
+            });
+
+            // Blueprint Navigator
+            const blueprintNavButtons = document.querySelectorAll('.blueprint-nav button');
+            const blueprintPanels = document.querySelectorAll('.blueprint-panel');
+            blueprintNavButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const target = button.getAttribute('data-blueprint-target');
+                    blueprintNavButtons.forEach(btn => btn.setAttribute('aria-selected', btn === button ? 'true' : 'false'));
+                    blueprintPanels.forEach(panel => {
+                        panel.classList.toggle('active', panel.getAttribute('data-blueprint-panel') === target);
+                    });
                 });
             });
 

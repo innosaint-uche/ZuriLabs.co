@@ -1152,7 +1152,7 @@
 <body class="antialiased">
 
     <!-- Header -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-200">
         <nav class="container mx-auto px-6 lg:px-8 py-4 flex justify-between items-center">
             <a href="index.html" class="flex items-center space-x-3">
                  <svg width="150" height="40" viewBox="0 0 150 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1170,12 +1170,23 @@
             </a>
             <div class="hidden md:flex items-center space-x-8">
                 <a href="index.html" class="text-gray-600 hover:text-royal-blue font-medium transition-colors">Home</a>
+                <a href="about-zurilabs.html" class="text-gray-600 hover:text-royal-blue font-medium transition-colors">About</a>
                 <a href="partners.html" class="text-royal-blue font-semibold transition-colors">Partners</a>
                 <a href="https://n8n.srv895792.hstgr.cloud/form/04d0f255-b238-43e8-ad92-07ec40fa030d" target="_blank" rel="noopener noreferrer" class="bg-gold text-black font-bold px-6 py-2.5 rounded-full hover:bg-gold-dark transition-transform transform hover:scale-105 shadow-md">Join Now</a>
             </div>
-             <!-- Mobile menu can be added here if needed -->
-            <a href="index.html" class="md:hidden text-gray-600 hover:text-royal-blue font-medium transition-colors">Back to Home</a>
+            <button id="partners-mobile-menu-button" class="md:hidden text-gray-700" aria-expanded="false" aria-controls="partners-mobile-menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+                <span class="sr-only">Toggle menu</span>
+            </button>
         </nav>
+        <div id="partners-mobile-menu" class="md:hidden hidden border-t border-gray-200 bg-white/95 backdrop-blur-xl">
+            <div class="px-6 py-4 space-y-3 text-gray-700">
+                <a href="index.html" class="block hover:text-royal-blue">Home</a>
+                <a href="about-zurilabs.html" class="block hover:text-royal-blue">About</a>
+                <a href="partners.html" class="block text-royal-blue font-semibold">Partners</a>
+                <a href="https://n8n.srv895792.hstgr.cloud/form/04d0f255-b238-43e8-ad92-07ec40fa030d" target="_blank" rel="noopener noreferrer" class="inline-flex w-full justify-center bg-gold text-black font-semibold px-6 py-2.5 rounded-full hover:bg-gold-dark transition-colors">Join Now</a>
+            </div>
+        </div>
     </header>
 
     <!-- Main Content -->
@@ -1366,7 +1377,7 @@
         <div class="container mx-auto px-6 lg:px-8 py-12">
             <div class="text-center text-gray-500 text-sm">
                 <ul class="flex justify-center space-x-6 mb-4">
-                    <li><a href="index.html#about" class="hover:text-royal-blue">About</a></li>
+                    <li><a href="about-zurilabs.html" class="hover:text-royal-blue">About</a></li>
                     <li><a href="partners.html" class="hover:text-royal-blue">Partners</a></li>
                     <li><a href="privacy-policy.html" class="hover:text-royal-blue">Privacy</a></li>
                     <li><a href="terms-of-service.html" class="hover:text-royal-blue">Terms</a></li>
@@ -1378,7 +1389,7 @@
     </footer>
 
     <!-- Partnership Modal -->
-    <div id="partnership-modal" class="modal-hidden fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-0">
+    <div id="partnership-modal" class="modal-hidden fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-0" aria-hidden="true">
         <!-- Overlay -->
         <div id="modal-overlay" class="modal-overlay absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
 
@@ -1558,6 +1569,15 @@
     </div>
 
     <script>
+        const partnersMenuButton = document.getElementById('partners-mobile-menu-button');
+        const partnersMenu = document.getElementById('partners-mobile-menu');
+        if (partnersMenuButton && partnersMenu) {
+            partnersMenuButton.addEventListener('click', () => {
+                const isOpen = partnersMenu.classList.toggle('hidden');
+                partnersMenuButton.setAttribute('aria-expanded', String(!isOpen));
+            });
+        }
+
         const modal = document.getElementById('partnership-modal');
         const openButtons = document.querySelectorAll('[data-open-modal="partnership"]');
         const closeBtn = document.getElementById('close-modal-btn');
@@ -1581,7 +1601,7 @@
             }
         });
 
-        form.addEventListener('submit', function(e) {
+        form?.addEventListener('submit', function(e) {
             e.preventDefault();
             
             const name = document.getElementById('fullName').value;
