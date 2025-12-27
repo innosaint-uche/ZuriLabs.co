@@ -1,124 +1,126 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms of Service - Zuri Labs</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Terms of Service – Zuri Labs</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --royal-blue: #0A0A2A;
-            --gold: #FFD700;
-            --sand-white: #F8F7F4;
-            --dark-gray: #1A202C;
-        }
-        html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-        body { font-family: 'Inter', sans-serif; background-color: var(--sand-white); color: var(--dark-gray); }
-        .prose h2 { color: var(--royal-blue); }
-        .prose h3 { color: var(--royal-blue); }
-        .prose a { color: var(--gold); }
-        .prose a:hover { text-decoration: underline; }
-        .text-royal-blue { color: var(--royal-blue); }
-        .hover\:text-royal-blue:hover { color: var(--royal-blue); }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/main.js" defer></script>
 </head>
-<body class="antialiased">
-
-    <!-- Header -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-        <nav class="container mx-auto px-6 lg:px-8 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center space-x-3">
-                 <svg width="150" height="40" viewBox="0 0 150 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" style="stop-color:var(--gold); stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#FFB800; stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                    <path d="M20 5 L0 20 L20 35 L18 20 Z" fill="url(#gold-grad)" />
-                    <text font-family="Inter, sans-serif" font-size="28" font-weight="800" fill="#0A0A2A">
-                        <tspan x="25" y="32">Zuri Labs</tspan>
-                    </text>
-                </svg>
+<body>
+    <header class="header">
+        <div class="navbar">
+            <a href="index.html" class="brand" aria-label="Zuri Labs home">
+                <span class="brand-mark">ZL</span>
+                Zuri Labs
             </a>
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="index.html" class="text-gray-600 hover:text-royal-blue font-medium transition-colors">Home</a>
-                <a href="partners.html" class="text-gray-600 hover:text-royal-blue font-medium transition-colors">Partners</a>
-                <a href="https://n8n.srv895792.hstgr.cloud/form/04d0f255-b238-43e8-ad92-07ec40fa030d" target="_blank" rel="noopener noreferrer" class="bg-gold text-black font-bold px-6 py-2.5 rounded-full hover:bg-gold-dark transition-transform transform hover:scale-105 shadow-md">Join Now</a>
+            <nav class="nav-links" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="about-zurilabs.html">About</a>
+                <a href="partners.html">Partners</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="nav-actions">
+                <a class="btn btn-secondary" href="index.html#individuals">Join the Community</a>
+                <a class="btn btn-primary" href="partners.html">Partner With Us</a>
             </div>
-            <!-- Mobile menu can be added here if needed -->
-            <a href="index.html" class="md:hidden text-gray-600 hover:text-royal-blue font-medium transition-colors">Back to Home</a>
-        </nav>
+            <button class="mobile-toggle" type="button" data-mobile-toggle aria-label="Toggle navigation" aria-controls="mobileDrawer" aria-expanded="false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h14M3 12h14M3 18h14"/></svg>
+            </button>
+        </div>
+        <div class="mobile-drawer" id="mobileDrawer" data-mobile-drawer>
+            <a href="index.html">Home</a>
+            <a href="about-zurilabs.html">About</a>
+            <a href="partners.html">Partners</a>
+            <a href="contact.html">Contact</a>
+            <a class="btn btn-secondary" href="index.html#individuals">Join the Community</a>
+            <a class="btn btn-primary" href="partners.html">Partner With Us</a>
+        </div>
     </header>
 
-    <!-- Main Content -->
     <main>
-        <div class="container mx-auto px-6 lg:px-8 py-24">
-            <div class="max-w-3xl mx-auto">
-                <div class="prose lg:prose-lg max-w-none">
-                    <h1 class="text-4xl md:text-5xl font-bold text-royal-blue">Terms of Service</h1>
-                    <p class="text-gray-600">Last updated: October 26, 2023</p>
-
-                    <p>Please read these Terms of Service ("Terms", "Terms of Service") carefully before using the https://zurilabs.co website and participating in the Zuri Labs community (the "Service") operated by Zuri Labs ("us", "we", or "our").</p>
-                    <p>Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users, and others who access or use the Service.</p>
-
-                    <h2>1. The Service</h2>
-                    <p>Zuri Labs provides a community-driven ecosystem for individuals interested in AI, Automation, and Emerging Technologies in Africa. The Service includes access to community platforms (like Discord/WhatsApp), educational content, networking events, a project marketplace, and other opportunities.</p>
-
-                    <h2>2. Community Guidelines</h2>
-                    <p>As a member of the Zuri Labs community, you agree to:</p>
-                    <ul>
-                        <li><strong>Be Respectful:</strong> Treat all members with respect, kindness, and professionalism. Harassment, discrimination, and hate speech will not be tolerated.</li>
-                        <li><strong>Collaborate and Share:</strong> Engage constructively. Share knowledge, provide helpful feedback, and contribute positively to discussions and projects.</li>
-                        <li><strong>No Spam or Self-Promotion:</strong> Do not post unsolicited advertisements or spam. Relevant links are acceptable, but excessive self-promotion is not.</li>
-                        <li><strong>Protect Privacy:</strong> Do not share personal information about other members without their explicit consent.</li>
-                    </ul>
-                    <p>We reserve the right to remove any content and suspend or terminate accounts of members who violate these guidelines.</p>
-
-                    <h2>3. Intellectual Property</h2>
-                    <p>The Service and its original content (excluding content provided by users), features, and functionality are and will remain the exclusive property of Zuri Labs. Our content is protected by copyright and other laws.</p>
-                    <p>You retain ownership of any intellectual property rights that you hold in the content you submit to the Service. By submitting content, you grant Zuri Labs a worldwide, non-exclusive, royalty-free license to use, reproduce, and display such content in connection with the Service.</p>
-
-                    <h2>4. Termination</h2>
-                    <p>We may terminate or suspend your access to our Service immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms.</p>
-
-                    <h2>5. Limitation of Liability</h2>
-                    <p>In no event shall Zuri Labs, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the Service.</p>
-
-                    <h2>6. Disclaimer</h2>
-                    <p>Your use of the Service is at your sole risk. The Service is provided on an "AS IS" and "AS AVAILABLE" basis. The Service is provided without warranties of any kind, whether express or implied.</p>
-
-                    <h2>7. Governing Law</h2>
-                    <p>These Terms shall be governed and construed in accordance with the laws of Nigeria, without regard to its conflict of law provisions.</p>
-
-                    <h2>8. Changes</h2>
-                    <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. We will provide notice of any changes by posting the new Terms on this page.</p>
-
-                    <h2>9. Contact Us</h2>
-                    <p>If you have any questions about these Terms, please contact us at <a href="mailto:legal@zurilabs.co">legal@zurilabs.co</a>.</p>
-                </div>
+        <section class="section hero" style="padding-bottom:3rem;">
+            <div class="section-inner">
+                <div class="badge">Terms</div>
+                <h1>Terms of Service</h1>
+                <p class="hero-subtitle">These terms describe how you may access and use Zuri Labs' platforms, events, and services.</p>
             </div>
-        </div>
+        </section>
+
+        <section class="section" style="padding-top:0;">
+            <div class="section-inner grid" style="gap:2rem;">
+                <article class="glass-card policy-section">
+                    <h2>1. Acceptance of terms</h2>
+                    <p>By accessing Zuri Labs' website, community platforms, or events, you agree to these terms and any additional guidelines referenced here.</p>
+                </article>
+                <article class="glass-card policy-section">
+                    <h2>2. Membership & conduct</h2>
+                    <p>Members must adhere to our community Code of Conduct, respect fellow participants, and avoid activities that disrupt programming or violate laws.</p>
+                </article>
+                <article class="glass-card policy-section">
+                    <h2>3. Intellectual property</h2>
+                    <p>Unless otherwise indicated, Zuri Labs owns the content we publish. You may not reproduce, distribute, or adapt our materials without permission.</p>
+                </article>
+                <article class="glass-card policy-section">
+                    <h2>4. Third-party services</h2>
+                    <p>Our programs may integrate third-party tools. Your use of those services is subject to their respective terms and privacy policies.</p>
+                </article>
+                <article class="glass-card policy-section">
+                    <h2>5. Disclaimers</h2>
+                    <p>We provide our content “as is” without warranties. Zuri Labs is not liable for indirect or consequential damages arising from program participation.</p>
+                </article>
+                <article class="glass-card policy-section">
+                    <h2>6. Changes to terms</h2>
+                    <p>We may update these terms to reflect new programs or legal requirements. Continued participation after updates constitutes acceptance.</p>
+                </article>
+                <article class="glass-card policy-section">
+                    <h2>7. Contact</h2>
+                    <p>Questions about these terms can be directed to <a href="mailto:legal@zuri.africa">legal@zuri.africa</a>. Last updated <strong>October 2024</strong>.</p>
+                </article>
+            </div>
+        </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-100 border-t">
-        <div class="container mx-auto px-6 lg:px-8 py-12">
-            <div class="text-center text-gray-500 text-sm">
-                <ul class="flex justify-center space-x-6 mb-4">
-                    <li><a href="index.html#about" class="hover:text-royal-blue">About</a></li>
-                    <li><a href="partners.html" class="hover:text-royal-blue">Partners</a></li>
-                    <li><a href="privacy-policy.html" class="hover:text-royal-blue">Privacy</a></li>
-                    <li><a href="terms-of-service.html" class="hover:text-royal-blue">Terms</a></li>
-                    <li><a href="contact.html" class="hover:text-royal-blue">Contact</a></li>
-                </ul>
-                <p>&copy; 2025 Zuri Labs. All rights reserved. A hub for global ambition with local impact.</p>
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="brand">
+                <span class="brand-mark">ZL</span>
+                Zuri Labs
             </div>
+            <div class="footer-cols">
+                <div>
+                    <h4>Navigate</h4>
+                    <ul style="list-style:none;padding:0;margin:1rem 0 0;display:grid;gap:0.5rem;">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about-zurilabs.html">About</a></li>
+                        <li><a href="partners.html">Partners</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Resources</h4>
+                    <ul style="list-style:none;padding:0;margin:1rem 0 0;display:grid;gap:0.5rem;">
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html" aria-current="page">Terms of Service</a></li>
+                        <li><a href="thank-you.html">Thank You</a></li>
+                        <li><a href="about-zurilabs.html#roadmap">Roadmap</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Stay in the loop</h4>
+                    <p>Monthly updates on community programs, partnerships, and opportunities.</p>
+                    <form action="thank-you.html" method="get" class="form-grid">
+                        <label for="footer-email">Email address</label>
+                        <input id="footer-email" name="email" type="email" placeholder="you@domain.com" required>
+                        <button class="btn btn-primary" type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <small>© <span data-current-year></span> Zuri Labs. Crafted for Africa's next generation of innovators.</small>
         </div>
     </footer>
-
 </body>
 </html>

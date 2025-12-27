@@ -1,97 +1,160 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Zuri Labs</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Contact Zuri Labs</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --royal-blue: #0A0A2A;
-            --gold: #FFD700;
-            --sand-white: #F8F7F4;
-            --dark-gray: #1A202C;
-        }
-        html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-        body { font-family: 'Inter', sans-serif; background-color: var(--sand-white); color: var(--dark-gray); }
-        .text-royal-blue { color: var(--royal-blue); }
-        .hover\:text-royal-blue:hover { color: var(--royal-blue); }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/main.js" defer></script>
 </head>
-<body class="antialiased">
-
-    <!-- Header -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-        <nav class="container mx-auto px-6 lg:px-8 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center space-x-3">
-                 <svg width="150" height="40" viewBox="0 0 150 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" style="stop-color:var(--gold); stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#FFB800; stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                    <path d="M20 5 L0 20 L20 35 L18 20 Z" fill="url(#gold-grad)" />
-                    <text font-family="Inter, sans-serif" font-size="28" font-weight="800" fill="#0A0A2A">
-                        <tspan x="25" y="32">Zuri Labs</tspan>
-                    </text>
-                </svg>
+<body>
+    <header class="header">
+        <div class="navbar">
+            <a href="index.html" class="brand" aria-label="Zuri Labs home">
+                <span class="brand-mark">ZL</span>
+                Zuri Labs
             </a>
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="index.html" class="text-gray-600 hover:text-royal-blue font-medium transition-colors">Home</a>
-                <a href="partners.html" class="text-gray-600 hover:text-royal-blue font-medium transition-colors">Partners</a>
-                <a href="https://n8n.srv895792.hstgr.cloud/form/04d0f255-b238-43e8-ad92-07ec40fa030d" target="_blank" rel="noopener noreferrer" class="bg-gold text-black font-bold px-6 py-2.5 rounded-full hover:bg-gold-dark transition-transform transform hover:scale-105 shadow-md">Join Now</a>
+            <nav class="nav-links" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="about-zurilabs.html">About</a>
+                <a href="partners.html">Partners</a>
+                <a href="contact.html" aria-current="page">Contact</a>
+            </nav>
+            <div class="nav-actions">
+                <a class="btn btn-secondary" href="index.html#individuals">Join the Community</a>
+                <a class="btn btn-primary" href="partners.html">Partner With Us</a>
             </div>
-            <!-- Mobile menu can be added here if needed -->
-            <a href="index.html" class="md:hidden text-gray-600 hover:text-royal-blue font-medium transition-colors">Back to Home</a>
-        </nav>
+            <button class="mobile-toggle" type="button" data-mobile-toggle aria-label="Toggle navigation" aria-controls="mobileDrawer" aria-expanded="false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h14M3 12h14M3 18h14"/></svg>
+            </button>
+        </div>
+        <div class="mobile-drawer" id="mobileDrawer" data-mobile-drawer>
+            <a href="index.html">Home</a>
+            <a href="about-zurilabs.html">About</a>
+            <a href="partners.html">Partners</a>
+            <a href="contact.html" aria-current="page">Contact</a>
+            <a class="btn btn-secondary" href="index.html#individuals">Join the Community</a>
+            <a class="btn btn-primary" href="partners.html">Partner With Us</a>
+        </div>
     </header>
 
-    <!-- Main Content -->
     <main>
-        <div class="container mx-auto px-6 lg:px-8 py-24">
-            <div class="max-w-3xl mx-auto text-center">
-                <h1 class="text-4xl md:text-5xl font-bold text-royal-blue">Get in Touch</h1>
-                <p class="mt-4 text-lg text-gray-600">Have a question, a partnership proposal, or just want to say hello? We'd love to hear from you.</p>
+        <section class="section hero">
+            <div class="section-inner hero-grid">
+                <div>
+                    <div class="badge">Let's talk</div>
+                    <h1>We want to hear from innovators, partners, and future members.</h1>
+                    <p class="hero-subtitle">Share your goals. Whether you're joining the community, exploring partnerships, or seeking media insights, the Zuri Labs team will connect you to the right person.</p>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-metrics">
+                        <div class="metric-card">
+                            <span class="badge">Response time</span>
+                            <strong>&lt;48h</strong>
+                            <p>Dedicated community leads respond to every message within two business days.</p>
+                        </div>
+                        <div class="metric-card">
+                            <span class="badge">Global network</span>
+                            <strong>10+</strong>
+                            <p>Partner hubs and allies across Africa and the diaspora ready to collaborate.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <div class="max-w-lg mx-auto mt-16 bg-white p-8 rounded-lg shadow-md">
-                <h2 class="text-2xl font-bold text-royal-blue mb-4">Contact Information</h2>
-                <p class="text-gray-700">For all inquiries, please reach out to us via email. We'll do our best to respond as quickly as possible.</p>
-                <div class="mt-6">
-                    <p class="font-semibold">General Inquiries:</p>
-                    <a href="mailto:hello@zurilabs.co" class="text-lg text-gold hover:underline">hello@zurilabs.co</a>
+        <section class="section">
+            <div class="section-inner contact-grid">
+                <div class="glass-card">
+                    <h2>Send us a message</h2>
+                    <form class="form-grid" action="thank-you.html" method="get">
+                        <label>Full name
+                            <input type="text" name="name" placeholder="Your name" required>
+                        </label>
+                        <label>Email address
+                            <input type="email" name="email" placeholder="you@example.com" required>
+                        </label>
+                        <label>How can we help?
+                            <select name="topic" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option>Join the community</option>
+                                <option>Corporate partnership</option>
+                                <option>Press & media</option>
+                                <option>Speaking engagement</option>
+                                <option>Other inquiry</option>
+                            </select>
+                        </label>
+                        <label>Message
+                            <textarea name="message" placeholder="Share details so we can support you best." required></textarea>
+                        </label>
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                    </form>
                 </div>
-                <div class="mt-6">
-                    <p class="font-semibold">Partnership Inquiries:</p>
-                    <a href="mailto:partners@zurilabs.co" class="text-lg text-gold hover:underline">partners@zurilabs.co</a>
-                </div>
-                 <div class="mt-8 border-t pt-6">
-                    <p class="font-semibold">Ready to join the community?</p>
-                    <a href="https://n8n.srv895792.hstgr.cloud/form/04d0f255-b238-43e8-ad92-07ec40fa030d" target="_blank" rel="noopener noreferrer" class="text-lg text-gold hover:underline">Click here to join the NEXUS &rarr;</a>
+                <div class="glass-card" style="gap:1.5rem;">
+                    <h2>Other ways to connect</h2>
+                    <div class="contact-card">
+                        <strong>Partnerships</strong>
+                        <p>For strategic collaborations and enterprise programs.</p>
+                        <a href="mailto:partners@zuri.africa">partners@zuri.africa</a>
+                    </div>
+                    <div class="contact-card">
+                        <strong>Community</strong>
+                        <p>Questions about membership, events, or mentorship.</p>
+                        <a href="mailto:community@zuri.africa">community@zuri.africa</a>
+                    </div>
+                    <div class="contact-card">
+                        <strong>Media & Insights</strong>
+                        <p>Press requests and speaking opportunities.</p>
+                        <a href="mailto:media@zuri.africa">media@zuri.africa</a>
+                    </div>
+                    <div class="map-card">
+                        <iframe title="Zuri Labs HQ" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3974.179235637284!2d3.379205!3d6.524379!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMzEnMjcuOCJOIDPCsDIyJzQ1LjEiRQ!5e0!3m2!1sen!2sng!4v1700000000000"></iframe>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-100 border-t">
-        <div class="container mx-auto px-6 lg:px-8 py-12">
-            <div class="text-center text-gray-500 text-sm">
-                <ul class="flex justify-center space-x-6 mb-4">
-                    <li><a href="index.html#about" class="hover:text-royal-blue">About</a></li>
-                    <li><a href="partners.html" class="hover:text-royal-blue">Partners</a></li>
-                    <li><a href="privacy-policy.html" class="hover:text-royal-blue">Privacy</a></li>
-                    <li><a href="terms-of-service.html" class="hover:text-royal-blue">Terms</a></li>
-                    <li><a href="contact.html" class="hover:text-royal-blue">Contact</a></li>
-                </ul>
-                <p>&copy; 2025 Zuri Labs. All rights reserved. A hub for global ambition with local impact.</p>
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="brand">
+                <span class="brand-mark">ZL</span>
+                Zuri Labs
             </div>
+            <div class="footer-cols">
+                <div>
+                    <h4>Navigate</h4>
+                    <ul style="list-style:none;padding:0;margin:1rem 0 0;display:grid;gap:0.5rem;">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about-zurilabs.html">About</a></li>
+                        <li><a href="partners.html">Partners</a></li>
+                        <li><a href="contact.html" aria-current="page">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Resources</h4>
+                    <ul style="list-style:none;padding:0;margin:1rem 0 0;display:grid;gap:0.5rem;">
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="thank-you.html">Thank You</a></li>
+                        <li><a href="about-zurilabs.html#roadmap">Roadmap</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Stay in the loop</h4>
+                    <p>Monthly updates on community programs, partnerships, and opportunities.</p>
+                    <form action="thank-you.html" method="get" class="form-grid">
+                        <label for="footer-email">Email address</label>
+                        <input id="footer-email" name="email" type="email" placeholder="you@domain.com" required>
+                        <button class="btn btn-primary" type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <small>© <span data-current-year></span> Zuri Labs. Crafted for Africa's next generation of innovators.</small>
         </div>
     </footer>
-
 </body>
 </html>
